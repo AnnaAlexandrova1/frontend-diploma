@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,700&display=swap" rel="stylesheet")
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #E5E5E5;
+    font-weight: 300;
+}
+
+.container{
+    width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*общие стилизация */
+
+.btn-footer:hover {
+    background-color: #FFCA62;
+    color: #2D2B2F;
+    border: 1px solid #FFCA62;
+}
+
+.btn-footer:focus {
+    background-color: #FFFFFF;
+    color: #2D2B2F;
+    border: 1px solid #FFFFFF;
+}
+
+.symbol-active:hover {
+    filter:  invert(30%) sepia(18%) saturate(5539%) hue-rotate(1deg) brightness(105%) contrast(104%);
+}
+
+
