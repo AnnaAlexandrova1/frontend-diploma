@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer class="footer">
       <div class="footer-main">
-        <div class="footer-main__contacts">
+        <div class="footer-main__contacts" id="contacts">
           <h3 class="footer-main_head">Свяжитесь с нами</h3>
           <ul class="footer-main__contacts__items">
             <li class="footer-main__contacts__item">

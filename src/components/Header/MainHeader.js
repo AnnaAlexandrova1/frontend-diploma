@@ -1,3 +1,5 @@
+import { HashLink } from "react-router-hash-link";
+
 import NavHeader from "./NavHeader";
 import './header.css'
 

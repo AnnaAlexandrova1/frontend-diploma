@@ -1,3 +1,4 @@
+import { HashLink } from "react-router-hash-link"
 
 export default function NavHeader() {
     return (
@@ -9,10 +10,10 @@ export default function NavHeader() {
     <nav className="header__navbar">
       <div className="container">
         <ul className="header__navlist">
-          <li className="nav-link active">О нас</li>
-          <li className="nav-link">Как это работает</li>
-          <li className="nav-link">Отзывы</li>
-          <li className="nav-link disabled">Контакты</li>
+          <HashLink smooth to="/#aboutUs"><li className="nav-link">О нас </li></HashLink>
+          <HashLink smooth to="/#howItsWork"><li className="nav-link">Как это работает</li></HashLink>
+          <HashLink smooth to="/#feedbacks"><li className="nav-link">Отзывы</li></HashLink>
+          <HashLink smooth to="/#contacts"><li className="nav-link disabled">Контакты</li></HashLink>
         </ul>
       </div>
     </nav>
