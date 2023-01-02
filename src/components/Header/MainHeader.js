@@ -1,13 +1,38 @@
-import { HashLink } from "react-router-hash-link";
+import { useState, useEffect } from "react";
 
 import NavHeader from "./NavHeader";
+import { useCity } from '../../api/getRequest'
 import './header.css'
 
 import rotate from "../../img/icons/rotate.svg";
 import fromToGeo from "../../img/icons/from-to-geo.svg";
 import calendar from "../../img/icons/calendar.svg";
+import Datalist from "./Datalist";
 
 export default function MainHeader() {
+  const [value, setValue] = useState('');
+
+  const handleChange = (evt) => {
+    setValue(evt.target.value)
+  }
+  
+  const userData = useCity(value)
+
+  const useData = (userData) => {
+    const [data, setData] = useState();
+    useEffect(() => {
+      if (userData) {
+         setData(userData)
+      }
+    }, [userData])
+    
+    return data
+  }
+
+  const data = useData(userData)
+  console.log(data)
+
+
   return (
     <header className="header">
       <NavHeader />
@@ -29,7 +54,13 @@ export default function MainHeader() {
                     type="text"
                     className="ticket-form__input from_search"
                     placeholder="Откуда"
+                    list='cities'
+                    value={value}
+                    onChange={handleChange}
                   />
+                  <datalist id="cities">
+                    <Datalist value={value} />
+                  </datalist>
                   <img
                     className="header-form__icon"
                     src={fromToGeo}

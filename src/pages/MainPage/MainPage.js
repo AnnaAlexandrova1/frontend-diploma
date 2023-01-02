@@ -8,6 +8,7 @@ import Footer from "../../components/Footer/Footer";
 import './MainPage.css'
 
 export default function MainPage() {
+
   return (
     <>
       <MainHeader />
