@@ -11,7 +11,7 @@ export default function MainPage() {
   return (
     <>
       <MainHeader />
-      <main class="main">
+      <main className="main">
               <AboutUs />
               <HowItsWork />
               <Feedbacks />
