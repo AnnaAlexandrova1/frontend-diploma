@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import NavHeader from "./NavHeader";
-import { useCity } from '../../api/getRequest'
+import { GetCity} from '../../api/getRequest'
 import './header.css'
 
 import rotate from "../../img/icons/rotate.svg";
@@ -9,30 +9,33 @@ import fromToGeo from "../../img/icons/from-to-geo.svg";
 import calendar from "../../img/icons/calendar.svg";
 import Datalist from "./Datalist";
 
+let getCity = new GetCity()
+
 export default function MainHeader() {
-  const [value, setValue] = useState('');
+  const [valueFrom, setValueFrom] = useState('');
+  const [cities, setCities] = useState([])
+  const [valueTo, setValueTo] = useState('')
+  const [citiesTo, setCitiesTo] = useState([])
 
-  const handleChange = (evt) => {
-    setValue(evt.target.value)
+  const handleChangeFrom = (evt) => {
+    setValueFrom(evt.target.value) 
   }
+
+  useEffect(() => {
+    getCity.getVariants(valueFrom).then((res) => setCities(res)).catch((err) => { return; })
+  }, [valueFrom])
   
-  const userData = useCity(value)
-
-  const useData = (userData) => {
-    const [data, setData] = useState();
-    useEffect(() => {
-      if (userData) {
-         setData(userData)
-      }
-    }, [userData])
-    
-    return data
+  const handleChangeTo = (evt) => {
+    setValueTo(evt.target.value) 
   }
 
-  const data = useData(userData)
-  console.log(data)
+  useEffect(() => {
+    getCity.getVariants(valueTo).then((res) => setCitiesTo(res)).catch((err) => { return; })
+    }, [valueTo])
 
 
+  
+  
   return (
     <header className="header">
       <NavHeader />
@@ -55,11 +58,13 @@ export default function MainHeader() {
                     className="ticket-form__input from_search"
                     placeholder="Откуда"
                     list='cities'
-                    value={value}
-                    onChange={handleChange}
+                    name='cities'
+                    autoсomplete="off"
+                    value={valueFrom}
+                    onChange={handleChangeFrom}
                   />
                   <datalist id="cities">
-                    <Datalist value={value} />
+                    { <Datalist cities={cities} /> }
                   </datalist>
                   <img
                     className="header-form__icon"
@@ -72,9 +77,18 @@ export default function MainHeader() {
                 </div>
                 <div className="header-form__item">
                   <input
+                    type="text"
                     className="ticket-form__input where_search right"
                     placeholder="Куда"
+                    list='citiesTo'
+                    name='citiesTo'
+                    autoсomplete="off"
+                    value={valueTo}
+                    onChange={handleChangeTo}
                   />
+                  <datalist id="citiesTo">
+                    { <Datalist cities={citiesTo} /> }
+                  </datalist>
                   <img
                     className="header-form__icon"
                     src={fromToGeo}

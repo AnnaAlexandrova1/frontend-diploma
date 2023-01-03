@@ -118,6 +118,7 @@
     outline: none;
     border: none;
     font-size: 100%;
+    text-transform: uppercase;
     margin: 0;
     overflow: visible;
 }
@@ -199,3 +200,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-sizing: border-box;
     background-color: #FFA800;
 }
+
+/* DATALIST */
+datalist {
+  position: absolute;
+  max-height: 20em;
+  border: 0 none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+datalist option {
+  font-size: 16px;
+  line-height: 1.2em;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0.3em 1em;
+  background-color: #F5F4F6;
+  color: #292929;
+  cursor: pointer;
+}
+
+datalist option:hover, datalist option:focus {
+  font-weight: 700;
+  outline: 0 none;
+}
+
+
