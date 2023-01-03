@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/AnnaAlexandrova1/frontend-diploma/static/css/main.84f9c421.css",
+    "main.js": "/AnnaAlexandrova1/frontend-diploma/static/js/main.d2687f5c.js",
+    "static/media/how-its-work-img.png": "/AnnaAlexandrova1/frontend-diploma/static/media/how-its-work-img.34a6bf67f0dd842ef3b3.png",
+    "static/media/train.png": "/AnnaAlexandrova1/frontend-diploma/static/media/train.f4d1d371eda14a0a99b8.png",
+    "static/media/directions.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/directions.400fc01e9852be7d623b647fca5c4413.svg",
+    "static/media/rotate.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/rotate.5e97f3817421f74117aed9dd3910ff9b.svg",
+    "static/media/footer-skype.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-skype.220e86f2dfe3e86003d8a1e2165f8ddf.svg",
+    "static/media/footer-linkedin.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-linkedin.e7186ea0f766f59305507f0dce6fa6bb.svg",
+    "static/media/footer-google.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-google.30589544e8f01d174bda51733ca3c2f1.svg",
+    "static/media/calendar.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/calendar.708a9b513c8caf1e47f6466925914576.svg",
+    "static/media/footer-twitter.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-twitter.935ee6e650fd8b2b376a8924f788b191.svg",
+    "static/media/footer-mail.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-mail.4701958975986a6e9797bd981b82ec40.svg",
+    "static/media/office.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/office.08ac698b6deaddf7246d005f6e6478c5.svg",
+    "static/media/footer-facebook.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-facebook.a63fbe0e663a852cb69f7fe8235648ba.svg",
+    "static/media/footer-youtube.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-youtube.59ac1c2dc749bf4d8733bed90492247b.svg",
+    "static/media/footerCell.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footerCell.a14a18b3d296e2341ed8b24242a315b6.svg",
+    "index.html": "/AnnaAlexandrova1/frontend-diploma/index.html",
+    "static/media/website.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/website.6c24ce510d565c85fc90f7738f21357a.svg",
+    "static/media/footer-geo.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-geo.08fbb43a0862cb1fd22a1aeeeb6740b2.svg",
+    "static/media/from-to-geo.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/from-to-geo.08fbb43a0862cb1fd22a1aeeeb6740b2.svg",
+    "static/media/footer-ellipse.svg": "/AnnaAlexandrova1/frontend-diploma/static/media/footer-ellipse.767a692508e291e6b8135c7959fcc5c4.svg",
+    "main.84f9c421.css.map": "/AnnaAlexandrova1/frontend-diploma/static/css/main.84f9c421.css.map",
+    "main.d2687f5c.js.map": "/AnnaAlexandrova1/frontend-diploma/static/js/main.d2687f5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84f9c421.css",
+    "static/js/main.d2687f5c.js"
+  ]
+}
