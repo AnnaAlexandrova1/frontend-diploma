@@ -1,5 +1,4 @@
-// import { getCities } from '../../api/link'
-// import { useUser } from '../../api/getRequest'
+
 
 export default function Datalist({ cities }) {
      if (!cities) {

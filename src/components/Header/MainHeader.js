@@ -1,4 +1,6 @@
+import React from "react";
 import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 import NavHeader from "./NavHeader";
 import { GetCity} from '../../api/getRequest'
@@ -17,8 +19,11 @@ export default function MainHeader() {
   const [valueTo, setValueTo] = useState('')
   const [citiesTo, setCitiesTo] = useState([])
 
+  const dateTo = React.createRef()
+  const dateBack = React.createRef()
+
   const handleChangeFrom = (evt) => {
-    setValueFrom(evt.target.value) 
+    setValueFrom(evt.target.value)
   }
 
   useEffect(() => {
@@ -26,15 +31,22 @@ export default function MainHeader() {
   }, [valueFrom])
   
   const handleChangeTo = (evt) => {
-    setValueTo(evt.target.value) 
+    setValueTo(evt.target.value)
   }
 
   useEffect(() => {
     getCity.getVariants(valueTo).then((res) => setCitiesTo(res)).catch((err) => { return; })
-    }, [valueTo])
+  }, [valueTo])
+
+  const getRoutes = (evt) => {
+    //evt.preventDefault()
+    if (valueFrom.length < 1 || valueTo.length < 1 || dateTo.value === "" || dateBack.value === "") {
+      alert("Заполните обязательные поля")
+      return
+    }
 
 
-  
+  }
   
   return (
     <header className="header">
@@ -62,6 +74,7 @@ export default function MainHeader() {
                     autoсomplete="off"
                     value={valueFrom}
                     onChange={handleChangeFrom}
+                    required
                   />
                   <datalist id="cities">
                     { <Datalist cities={cities} /> }
@@ -85,6 +98,7 @@ export default function MainHeader() {
                     autoсomplete="off"
                     value={valueTo}
                     onChange={handleChangeTo}
+                    required
                   />
                   <datalist id="citiesTo">
                     { <Datalist cities={citiesTo} /> }
@@ -106,6 +120,8 @@ export default function MainHeader() {
                       type="date"
                       className="ticket-form__input departure-date"
                       placeholder="ДД/ММ/ГГ"
+                      ref={dateTo}
+                      required
                     />
                     <div
                       className="datepicker__wrapper"
@@ -129,6 +145,8 @@ export default function MainHeader() {
                       type="date"
                       className="ticket-form__input departure-date-back right"
                       placeholder="ДД/ММ/ГГ"
+                      ref={dateBack}
+                      required
                     />
                     <div
                       className="datepicker__wrapper"
@@ -150,7 +168,10 @@ export default function MainHeader() {
 
             <div className="header-form__submit">
               <div className="header-form__item">
-                <button className="find-tickets right">Найти билеты</button>
+                <NavLink to="/trainselect">
+                <button className="find-tickets right"
+                  onClick={getRoutes}
+                >Найти билеты</button></NavLink>
               </div>
             </div>
           </form>

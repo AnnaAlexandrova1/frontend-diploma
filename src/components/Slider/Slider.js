@@ -30,7 +30,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="slider">
+    <div className="slider_Dots">
     <SliderContext.Provider
       value={{
         goToSlide,
