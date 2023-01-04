@@ -1,5 +1,8 @@
+import React from "react";
+import { useState } from "react";
 import NavHeader from "./NavHeader";
 import BreadCrums from "./BreadCrums/BreadCrums";
+import Datalist from "./Datalist";
 import "./header.css";
 
 import fromToGeo from '../../img/icons/from-to-geo.svg'
@@ -7,6 +10,20 @@ import rotate from './../../img/icons/rotate.svg'
 import calendar from './../../img/icons/calendar.svg'
 
 export default function HeaderSelectOptions() {
+  const [valueFrom, setValueFrom] = useState('');
+  const [valueTo, setValueTo] = useState('')
+
+  const dateTo = React.createRef()
+  const dateBack = React.createRef()
+
+  const handleChangeFrom = (evt) => {
+    setValueFrom(evt.target.value)
+  }
+  
+  const handleChangeTo = (evt) => {
+    setValueTo(evt.target.value)
+  }
+
   return (
     <header className="header-trainselect">
       <div className="header-trainselect-image">
@@ -22,7 +39,16 @@ export default function HeaderSelectOptions() {
                       type="text"
                       className="ticket-form__input from_search"
                       placeholder="Откуда"
+                      list='cities'
+                      name='cities'
+                      autoсomplete="off"
+                      value={valueFrom}
+                      onChange={handleChangeFrom}
+                      required
                     />
+                    <datalist id="cities">
+                    { <Datalist arg={valueFrom} /> }
+                  </datalist>
                     <img
                       className="header-form__icon"
                       src={fromToGeo}
@@ -36,7 +62,16 @@ export default function HeaderSelectOptions() {
                     <input
                       className="ticket-form__input where_search right"
                       placeholder="Куда"
+                      list='citiesTo'
+                      name='citiesTo'
+                      autoсomplete="off"
+                      value={valueTo}
+                      onChange={handleChangeTo}
+                      required
                     />
+                    <datalist id="citiesTo">
+                    { <Datalist arg={valueTo} /> }
+                    </datalist>
                     <img
                       className="header-form__icon"
                       src={fromToGeo}
@@ -54,6 +89,8 @@ export default function HeaderSelectOptions() {
                         type="date"
                         className="ticket-form__input departure-date"
                         placeholder="ДД/ММ/ГГ"
+                        ref={dateTo}
+                        required
                       />
                       <div
                             className="datepicker__wrapper"
@@ -77,6 +114,8 @@ export default function HeaderSelectOptions() {
                         type="date"
                         className="ticket-form__input departure-date-back right"
                         placeholder="ДД/ММ/ГГ"
+                        ref={dateBack}
+                        required
                       />
                       <div
                         className="datepicker__wrapper"

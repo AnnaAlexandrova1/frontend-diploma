@@ -1,23 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from 'react-router-dom';
-
 import NavHeader from "./NavHeader";
-import { GetCity} from '../../api/getRequest'
+import Datalist from "./Datalist";
 import './header.css'
 
 import rotate from "../../img/icons/rotate.svg";
 import fromToGeo from "../../img/icons/from-to-geo.svg";
 import calendar from "../../img/icons/calendar.svg";
-import Datalist from "./Datalist";
-
-let getCity = new GetCity()
 
 export default function MainHeader() {
   const [valueFrom, setValueFrom] = useState('');
-  const [cities, setCities] = useState([])
   const [valueTo, setValueTo] = useState('')
-  const [citiesTo, setCitiesTo] = useState([])
 
   const dateTo = React.createRef()
   const dateBack = React.createRef()
@@ -25,27 +19,9 @@ export default function MainHeader() {
   const handleChangeFrom = (evt) => {
     setValueFrom(evt.target.value)
   }
-
-  useEffect(() => {
-    getCity.getVariants(valueFrom).then((res) => setCities(res)).catch((err) => { return; })
-  }, [valueFrom])
   
   const handleChangeTo = (evt) => {
     setValueTo(evt.target.value)
-  }
-
-  useEffect(() => {
-    getCity.getVariants(valueTo).then((res) => setCitiesTo(res)).catch((err) => { return; })
-  }, [valueTo])
-
-  const getRoutes = (evt) => {
-    //evt.preventDefault()
-    if (valueFrom.length < 1 || valueTo.length < 1 || dateTo.value === "" || dateBack.value === "") {
-      alert("Заполните обязательные поля")
-      return
-    }
-
-
   }
   
   return (
@@ -77,7 +53,7 @@ export default function MainHeader() {
                     required
                   />
                   <datalist id="cities">
-                    { <Datalist cities={cities} /> }
+                    { <Datalist arg={valueFrom} /> }
                   </datalist>
                   <img
                     className="header-form__icon"
@@ -101,7 +77,7 @@ export default function MainHeader() {
                     required
                   />
                   <datalist id="citiesTo">
-                    { <Datalist cities={citiesTo} /> }
+                    { <Datalist arg={valueTo} /> }
                   </datalist>
                   <img
                     className="header-form__icon"
@@ -170,7 +146,7 @@ export default function MainHeader() {
               <div className="header-form__item">
                 <NavLink to="/trainselect">
                 <button className="find-tickets right"
-                  onClick={getRoutes}
+                  // onClick={getRoutes}
                 >Найти билеты</button></NavLink>
               </div>
             </div>
