@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { setParams } from "../../reducers/routesParamsSlice";
 import NavHeader from "./NavHeader";
 import Datalist from "./Datalist";
 import './header.css'
@@ -10,11 +12,15 @@ import fromToGeo from "../../img/icons/from-to-geo.svg";
 import calendar from "../../img/icons/calendar.svg";
 
 export default function MainHeader() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [valueFrom, setValueFrom] = useState('');
   const [valueTo, setValueTo] = useState('')
 
-  const dateTo = React.createRef()
-  const dateBack = React.createRef()
+  const [from_city_id, setFrom_city_id] = useState('')
+  const [to_city_id, setTo_city_id]= useState('')
+  const [dateTo, setDateTo] = useState('')
+  const [dateBack, setDateBack] = useState('')
 
   const handleChangeFrom = (evt) => {
     setValueFrom(evt.target.value)
@@ -22,6 +28,36 @@ export default function MainHeader() {
   
   const handleChangeTo = (evt) => {
     setValueTo(evt.target.value)
+  }
+  
+  const handledDateTo = (evt) => {
+    setDateTo(evt.target.value)
+  }
+
+  const handledDateBack = (evt) => {
+    setDateBack(evt.target.value)
+  }
+  
+  const setIdFrom = (id) => {
+    setFrom_city_id(id)
+  }
+  
+  const setIdTo = (id) => {
+    setTo_city_id(id)
+  }
+
+
+  const setParamsinStore = (evt) => {
+    evt.preventDefault()
+    const request = {
+        from_city_id: from_city_id, 
+        to_city_id: to_city_id,
+        date_start: dateTo,
+        date_end: dateBack,
+    }
+    dispatch(setParams(request))
+
+    navigate("/trainselect")
   }
   
   return (
@@ -53,7 +89,7 @@ export default function MainHeader() {
                     required
                   />
                   <datalist id="cities">
-                    { <Datalist arg={valueFrom} /> }
+                    {<Datalist arg={valueFrom} onClick={setIdFrom} /> }
                   </datalist>
                   <img
                     className="header-form__icon"
@@ -77,7 +113,7 @@ export default function MainHeader() {
                     required
                   />
                   <datalist id="citiesTo">
-                    { <Datalist arg={valueTo} /> }
+                    {<Datalist arg={valueTo} onClick={setIdTo} /> }
                   </datalist>
                   <img
                     className="header-form__icon"
@@ -96,7 +132,7 @@ export default function MainHeader() {
                       type="date"
                       className="ticket-form__input departure-date"
                       placeholder="ДД/ММ/ГГ"
-                      ref={dateTo}
+                      onChange={handledDateTo}
                       required
                     />
                     <div
@@ -121,7 +157,7 @@ export default function MainHeader() {
                       type="date"
                       className="ticket-form__input departure-date-back right"
                       placeholder="ДД/ММ/ГГ"
-                      ref={dateBack}
+                      onChange={handledDateBack}
                       required
                     />
                     <div
@@ -144,10 +180,11 @@ export default function MainHeader() {
 
             <div className="header-form__submit">
               <div className="header-form__item">
-                <NavLink to="/trainselect">
+                {/* <NavLink to="/trainselect"> */}
                 <button className="find-tickets right"
-                  // onClick={getRoutes}
-                >Найти билеты</button></NavLink>
+                  onClick={setParamsinStore}
+                >Найти билеты</button>
+              {/* </NavLink> */}
               </div>
             </div>
           </form>
