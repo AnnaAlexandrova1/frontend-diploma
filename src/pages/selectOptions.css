@@ -412,6 +412,7 @@ input:checked + .slider:before {
   font-weight: normal;
   line-height: normal;
   font-size: 20px;
+  text-transform: capitalize;
   color: #292929;
 }
 
@@ -449,7 +450,13 @@ input:checked + .slider:before {
   display: flex;
   width: 92px;
   height: 20px;
-  background: url(../img/icons/css_sprites.png) -20px -550px;
+  /* background: url(../img/icons/css_sprites.png) -20px -550px; */
+}
+
+.comfort-props_vector_item {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
 }
 
 .overlooked-ticket-price {
