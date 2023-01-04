@@ -2,14 +2,15 @@ import TrainsHead from "./TrainsHead"
 import TrainsList from "./TrainsList"
 import Pagination from "./Pagination"
 import { useSelector, useDispatch } from "react-redux"
-import routesParamsSlice from "../../reducers/routesParamsSlice"
-import { setParams } from "../../reducers/routesParamsSlice"
-import store from "../../store/store"
+import { useGetRoutesQuery } from "../../api/api"
+
 
 export default function Trains() {
     const list = useSelector(state => state.routesParamsSlice)
     const dispatch = useDispatch()
-    console.log(list)
+    const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
+    
+
     return (
         <section className="trains">
             <TrainsHead />
