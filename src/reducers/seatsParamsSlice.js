@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-function getKeyByValue(object, value) {
-  return Object.keys(object).find(key => object[key] === value);
-}
-
 const initialState = {
-    id: '', 
+    req: {
+      id: '',
+    },
+    data: {}
 }
 
 const seatsParamsSlice = createSlice({
@@ -14,10 +13,8 @@ const seatsParamsSlice = createSlice({
     reducers: {
         resetSeats: (state) => initialState,
         setSeatsParams: (state, action) => {
-            state = {
-                ...state, 
-                ...action.payload
-            }
+            state.req.id = action.payload.req.id
+            state.data.item  = action.payload.data
         }
     }
 })

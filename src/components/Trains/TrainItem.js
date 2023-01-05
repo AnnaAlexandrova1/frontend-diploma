@@ -8,9 +8,16 @@ export default function TrainItem({ item }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const setParamsinStore = (id) => {
+  //console.log(item.departure._id)
+  const setParamsinStore = (id, item) => {
+    // console.log(item)
+   // event.preventDefault()
     const request = {
-      id: id,
+      req: {
+        id: id,
+      },
+      data: item,
+      
     };
     dispatch(setSeatsParams(request));
 
@@ -123,8 +130,9 @@ export default function TrainItem({ item }) {
           </div>
           <NavLink to={'/seatsselect/'}>
           <button className="select-seats"
-            onClick={setParamsinStore(item.departure.id)}
-          >Выбрать места</button></NavLink>
+              onClick={setParamsinStore(item.departure._id, item)}
+          >Выбрать места</button>
+        </NavLink>
           </div>
         </li>
     )
