@@ -1,8 +1,8 @@
-export default function TrainsHead() {
+export default function TrainsHead({count}) {
     return (
         <section className="trains_head">
         <div className="trains-list_section-title">
-          <p className="section-name">Найдено: </p><span className="trains-amount">20</span>
+          <p className="section-name">Найдено: </p><span className="trains-amount">{ count }</span>
         </div>
         <div className="trains-list_sort-by">
           <p className="sort-by">Сортировать по:</p>
