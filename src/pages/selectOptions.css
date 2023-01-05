@@ -580,6 +580,7 @@ input:checked + .slider:before {
 .train-description-wrap {
   width: 197px;
   background-color: #e4e0e9;
+  text-transform: capitalize;
 }
 
 .train-description {
@@ -641,6 +642,7 @@ input:checked + .slider:before {
 
 .train-travel_time-scheme-wrap {
   width: 479px;
+  text-transform: capitalize;
 }
 
 .train-shipment-scheme,

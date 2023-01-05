@@ -1,15 +1,7 @@
+import { showTime, showDuration, showPrice, showSeats } from "../../service/dataTransform"
 
 export default function TrainItem({ item }) {
-    const showPrice = (arg) => {
-        if (arg === undefined) {
-            return
-        }
-      return arg.bottom_price
-    }
 
-    const showSeats = (arg) => {
-       return arg > 0 ? arg : 0;
-  }
   
     return (
         <li className="train">
@@ -31,16 +23,16 @@ export default function TrainItem({ item }) {
           <div className="train-travel_time-scheme-wrap">
             <div className="train-shipment-scheme">
               <div className="train-departure-time-wrap">
-                        <span className="train-departure-time">{ item.departure.from.datetime}</span>
+                        <span className="train-departure-time">{ showTime(item.departure.from.datetime)}</span>
                         <span className="train-departure-point">{ item.departure.from.city.name}</span>
                         <span className="train-departure-station">{ item.departure.from.railway_station_name}</span>
               </div>
               <div className="travel-time-wrap">
-                        <span className="travel-time">{ item.departure.duration }</span>
+                        <span className="travel-time">{ showDuration(item.departure.duration) }</span>
                 <span className="travel-time-vector"></span>
               </div>
               <div className="train-arrival-time">
-                        <span className="train-departure-time">{item.departure.to.datetime}</span>
+                        <span className="train-departure-time">{showTime(item.departure.to.datetime)}</span>
                 <span className="train-departure-point">{item.departure.to.city.name}</span>
                 <span className="train-departure-station">
                             {item.departure.to.railway_station_name}
