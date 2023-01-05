@@ -375,7 +375,9 @@ input:checked + .slider:before {
   background: url(../img/icons/css_sprites.png) -390px -680px;
   margin: 38px 18px 0 0px;
 }
-
+.overlooked-tickets{
+  margin-top: 95px;
+}
 .overlooked-tickets h2 {
   font-family: "Roboto", sans-serif;
   font-style: normal;

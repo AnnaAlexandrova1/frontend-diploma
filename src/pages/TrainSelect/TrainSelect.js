@@ -1,20 +1,44 @@
-import HeaderSelectOptions from "../../components/Header/HeaderSelectOptions"
-import FilterTrainSelect from "../../components/Filters/FilterTrainSelect"
-import OverLooked from "../../components/OverLooked/OverLooked"
-import Trains from "../../components/Trains/Trains"
-import Footer from "../../components/Footer/Footer"
+//import TrainsHead from "../../components/Trains/TrainsHead";
+import TrainsHead from '../../components/Trains/TrainsHead'
+
+import TrainsList from "../../components/Trains/TrainsList";
+import Pagination from "../../components/Trains/Pagination";
+import Error from '../../components/Error/Error'
+import IsLoading from '../../components/IsLoading/IsLoading'
+import { useSelector } from "react-redux"
+import { useGetRoutesQuery } from "../../api/api"
 import '../selectOptions.css'
 
+
 export default function TrainSelect() {
-    return (<>
-        <HeaderSelectOptions />
-        <main className="main-container">
-            <section className="sidebar-content">
-                <FilterTrainSelect />
-                <OverLooked />
-            </section>
-            <Trains />
-        </main>
-        <Footer />
-    </>)
+    const list = useSelector(state => state.routesParamsSlice)
+  
+    const makeArgs = (list) => {
+        let args = ''
+        for (let key in list) {
+        if (list[key] !== '') {
+           args = args + `${key}=${list[key]}&` 
+        }
+    }
+      return args.slice(0, -1)
+    }
+    const args = makeArgs(list)
+    const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
+    
+    if (isError) {
+        return ( <Error />)
+    }
+    if (isFetching) {
+        return (<IsLoading />)
+    }
+    if (result) {
+         return (
+        <section className="trains">
+                 <TrainsHead count={result.total_count } />
+                 <TrainsList items={ result.items} />
+            <Pagination />
+        </section>
+    )
+    }
+
 }

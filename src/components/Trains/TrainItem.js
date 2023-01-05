@@ -1,8 +1,22 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { setSeatsParams } from "../../reducers/seatsParamsSlice";
+import { NavLink } from "react-router-dom";
 import { showTime, showDuration, showPrice, showSeats } from "../../service/dataTransform"
 
 export default function TrainItem({ item }) {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  
+  const setParamsinStore = (id) => {
+    const request = {
+      id: id,
+    };
+    dispatch(setSeatsParams(request));
+
+    //navigate("/seatsselect");
+  };
+
     return (
         <li className="train">
           <div className="train-description-wrap">
@@ -101,9 +115,16 @@ export default function TrainItem({ item }) {
               </li>
             </ul>
             <div className="train-comfort-available-props">
-              <span className="comfort-props_vector"></span>
-            </div>
-            <button className="select-seats">Выбрать места</button>
+            <span className="comfort-props_vector">
+              {item.departure.have_wifi ? (<i className="bi bi-wifi comfort-props_vector_item"></i>) : null}
+              {item.departure.is_express ? (<i className="bi bi-rocket-takeoff-fill comfort-props_vector_item"></i>) : null}
+              {item.departure.have_air_conditioning ? (<i className="bi bi-cup-fill comfort-props_vector_item"></i>) : null}
+              </span>
+          </div>
+          <NavLink to={'/seatsselect/'}>
+          <button className="select-seats"
+            onClick={setParamsinStore(item.departure.id)}
+          >Выбрать места</button></NavLink>
           </div>
         </li>
     )
