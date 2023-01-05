@@ -9,15 +9,17 @@ import { useGetRoutesQuery } from "../../api/api"
 
 export default function Trains() {
     const list = useSelector(state => state.routesParamsSlice)
-
-    let args = ''
-    for (let key in list) {
+  
+    const makeArgs = (list) => {
+        let args = ''
+        for (let key in list) {
         if (list[key] !== '') {
            args = args + `${key}=${list[key]}&` 
         }
     }
-    args = args.slice(0, -1)
-
+      return args.slice(0, -1)
+    }
+    const args = makeArgs(list)
     const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
     
     if (isError) {
@@ -27,7 +29,6 @@ export default function Trains() {
         return (<IsLoading />)
     }
     if (result) {
-        console.log(result)
          return (
         <section className="trains">
                  <TrainsHead count={result.total_count } />

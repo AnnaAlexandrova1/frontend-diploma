@@ -1,17 +1,16 @@
 
 export default function TrainItem({ item }) {
     const showPrice = (arg) => {
-        console.log(arg)
-        if (!arg) {
+        if (arg === undefined) {
             return
         }
-    //   return arg ? arg : '';
+      return arg.bottom_price
     }
 
     const showSeats = (arg) => {
        return arg > 0 ? arg : 0;
-    }
-
+  }
+  
     return (
         <li className="train">
           <div className="train-description-wrap">
@@ -76,7 +75,7 @@ export default function TrainItem({ item }) {
                         }</span>oт{" "}
                 <span className="place-ticket-price">
                             {
-                                // showPrice(item.departure.price_info.forth.bottom_price)
+                               showPrice(item.departure.price_info.fourth)
                             }<span className="rub-vector-small"></span>
                 </span>
               </li>
@@ -87,7 +86,7 @@ export default function TrainItem({ item }) {
                         }</span>oт{" "}
                 <span className="place-ticket-price">
                             {
-                                // showPrice(item.departure.price_info.third.bottom_price)
+                                showPrice(item.departure.price_info.third)
                             }<span className="rub-vector-small"></span>
                 </span>
               </li>
@@ -95,7 +94,7 @@ export default function TrainItem({ item }) {
                 <span className="type">Купе</span>{" "}
                         <span className="seats">{showSeats(item.available_seats_info.second)}</span>oт{" "}
                 <span className="place-ticket-price">
-                            {/* {showPrice(item.departure.price_info.second.bottom_price) */
+                            {showPrice(item.departure.price_info.second) 
                             }<span className="rub-vector-small"></span>
                 </span>
               </li>
@@ -104,7 +103,7 @@ export default function TrainItem({ item }) {
                 <span className="seats">{showSeats(item.available_seats_info.first)}</span>oт{" "}
                 <span className="place-ticket-price">
                             {
-                                // showPrice(item.departure.price_info.first.bottom_price)
+                                showPrice(item.departure.price_info.first)
                             }<span className="rub-vector-small"></span>
                 </span>
               </li>
