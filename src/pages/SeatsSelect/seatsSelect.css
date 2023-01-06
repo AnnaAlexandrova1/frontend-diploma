@@ -254,22 +254,22 @@ display: flex;
 
 .seat .wagon-type_vector {
   width: 31px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -619px -374px;;
+  /* //background: url(../../img/icons/css_sprites.png) -619px -374px;; */
 }
 
 .platzKarte .wagon-type_vector {
   width: 50px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -448px -424px;
+  /* background: url(../../img/icons/css_sprites.png) -448px -424px; */
 }
 
 .coupe .wagon-type_vector {
   width: 50px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -619px -20px;
+  /* background: url(../../img/icons/css_sprites.png) -619px -20px; */
 }
 
 .luxury .wagon-type_vector {
   width: 57px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -351px -424px;
+  /* background: url(../../img/icons/css_sprites.png) -351px -424px; */
 }
 
 .seat-active, .platzKarte-active, .coupe-active, .luxury-active {
@@ -278,22 +278,26 @@ display: flex;
 
  .seat-active .wagon-type_vector-active, .seat:hover .wagon-type_vector {
   width: 31px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -538px -424px;
+  /* background: url(../../img/icons/css_sprites.png) -538px -424px; */
 }
 
  .platzKarte-active .wagon-type_vector-active, .platzKarte:hover .wagon-type_vector {
   width: 50px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -619px -200px;
+  /* background: url(../../img/icons/css_sprites.png) -619px -200px; */
 }
 
  .coupe-active .wagon-type_vector-active, .coupe:hover .wagon-type_vector {
   width: 50px; height: 50px;
-  background: url(../../img/icons/css_sprites.png) -619px -110px;
+  /* background: url(../../img/icons/css_sprites.png) -619px -110px; */
 }
 
 .luxury-active .wagon-type_vector-active, .luxury:hover .wagon-type_vector {
   width: 57px; height: 50px;
-  background: url(../../img/icons/css_sprites.png)  -254px -424px;
+  /* background: url(../../img/icons/css_sprites.png)  -254px -424px; */
+}
+
+.wagon-type_vector-active img, .wagon-type_vector img:hover, .wagon-type_vector:focus{
+    filter:  invert(30%) sepia(18%) saturate(5539%) hue-rotate(1deg) brightness(105%) contrast(104%);
 }
 
 .wagon-numbers {
@@ -303,6 +307,7 @@ display: flex;
   height: 37px;
   background: rgba(255, 168, 0, 0.44);
 }
+
 
 .wagon-numbers-list {
   display: flex;

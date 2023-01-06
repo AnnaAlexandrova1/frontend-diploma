@@ -1,9 +1,7 @@
 import { showTime, showDurationHours, showDurationMinutes, } from "../../service/dataTransform"
 
-export default function SeatsTrainDesc({ res, item }) {
-    item = item.item;
+export default function SeatsTrainDesc({ item }) {
 
-    //console.log(item)
     return (
         <div className="seats_train-description-wrap">
           <div className="seats_train-description">
