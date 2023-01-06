@@ -1,4 +1,4 @@
-import forth from "../../img/icons/forthClass.svg";
+import fourth from "../../img/icons/fourthClass.svg";
 import third from "../../img/icons/thirdClass.svg";
 import second from "../../img/icons/secondClass.svg";
 import first from "../../img/icons/firstClass.svg";
@@ -19,11 +19,11 @@ export default function VanType({ typeVan, changeVanType }) {
       <h2 className="wagon-type-title">Тип вагона</h2>
       <ul className="wagon-types-list">
         <li
-          className={styleWagonType("forth", "seat")}
-          onClick={() => changeVanType("forth")}
+          className={styleWagonType("fourth", "seat")}
+          onClick={() => changeVanType("fourth")}
         >
-          <span className={styleWagonTypeVector("forth")}>
-            <img src={forth} alt={"seat"} />
+          <span className={styleWagonTypeVector("fourth")}>
+            <img src={fourth} alt={"seat"} />
           </span>
           Сидячий
         </li>
@@ -47,7 +47,7 @@ export default function VanType({ typeVan, changeVanType }) {
         </li>
         <li
           className={styleWagonType("first", "luxury")}
-          onClick={() => changeVanType("luxury")}
+          onClick={() => changeVanType("first")}
         >
           <span className={styleWagonTypeVector("first")}>
             <img src={first} alt={"coupe"} />

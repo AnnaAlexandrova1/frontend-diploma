@@ -12,6 +12,7 @@ import '../selectOptions.css'
 
 export default function TrainSelect() {
     const list = useSelector(state => state.routesParamsSlice)
+    console.log(list)
   
     const makeArgs = (list) => {
         let args = ''
@@ -32,6 +33,7 @@ export default function TrainSelect() {
         return (<IsLoading />)
     }
     if (result) {
+        console.log(result)
          return (
         <section className="trains">
                  <TrainsHead count={result.total_count } />

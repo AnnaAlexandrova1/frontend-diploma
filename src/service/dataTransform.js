@@ -34,4 +34,25 @@ const showSeats = (arg) => {
   return arg > 0 ? arg : 0;
 };
 
-export { showTime, showDuration, showDurationHours, showDurationMinutes, showPrice, showSeats };
+const drowVansList = (filterVansList) => {
+  if (filterVansList.length === 0 || !filterVansList.length) {
+    return;
+  }
+  let obj = {};
+  for (let i = 0; i < filterVansList.length; i++) {
+    i === 0 ? (obj[i] = true) : (obj[i] = false);
+  }
+  return obj;
+};
+
+export {
+  showTime,
+  showDuration,
+  showDurationHours,
+  showDurationMinutes,
+  showPrice,
+  showSeats,
+  drowVansList
+};
+
+

@@ -34,12 +34,11 @@ export default function SeatsSelect() {
   }
 
   if (result) {
-    const filterVans = () => {
+      const filterVans = () => {
       return result.filter((item) => item.coach.class_type === typeVan);
     };
     const filterVansList = filterVans();
 
-    console.log(result);
     return (
       <section className="seats-content">
         <h1 className="seats-title">Выбор мест</h1>
