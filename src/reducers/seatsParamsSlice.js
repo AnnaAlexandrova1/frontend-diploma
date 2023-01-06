@@ -4,7 +4,7 @@ const initialState = {
     req: {
       id: '',
     },
-    data: {}
+    data: {},
 }
 
 const seatsParamsSlice = createSlice({

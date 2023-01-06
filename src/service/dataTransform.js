@@ -13,6 +13,16 @@ function showDuration(time) {
   return timeStamp;
 }
 
+function showDurationHours(time) {
+  let hours = Math.floor(time / 60 / 60);
+  return hours;
+}
+
+function showDurationMinutes(time) {
+  let min = (time / 60) % 60;
+  return min;
+}
+
 const showPrice = (arg) => {
   if (arg === undefined) {
     return;
@@ -24,4 +34,4 @@ const showSeats = (arg) => {
   return arg > 0 ? arg : 0;
 };
 
-export { showTime, showDuration, showPrice, showSeats };
+export { showTime, showDuration, showDurationHours, showDurationMinutes, showPrice, showSeats };

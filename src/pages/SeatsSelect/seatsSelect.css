@@ -60,6 +60,8 @@
   height: 123px;
   background: #F7F6F6;
   margin-top: 30px;
+
+  text-transform: capitalize;
 }
 
 .seats_train-description {
