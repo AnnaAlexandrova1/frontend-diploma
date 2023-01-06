@@ -2,9 +2,15 @@ import { useState } from "react";
 import VansNumbers from "./VansNumbers";
 import SeatsSelectForm from "./SeatsSelectForm";
 import { drowVansList } from "../../service/dataTransform";
+import { useSelector } from "react-redux";
 
-export default function Vans({ filterVansList, typeVan }) {
+export default function Vans() {
+  const filterVansList = useSelector(state => state.vansParamsSlice)
+ const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
+
   const list = drowVansList(filterVansList);
+
+  console.log(filterVansList)
   const [vanChecked, setVanChecked] = useState(list);
   const [num, setNum] = useState('')
 

@@ -1,9 +1,19 @@
+import { setTypeVan } from "../../reducers/vansParamsSlice";
+
 import fourth from "../../img/icons/fourthClass.svg";
 import third from "../../img/icons/thirdClass.svg";
 import second from "../../img/icons/secondClass.svg";
 import first from "../../img/icons/firstClass.svg";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function VanType({ typeVan, changeVanType }) {
+export default function VanType() {
+  const dispatch = useDispatch()
+  let typeVan = useSelector(state => state.vansParamsSlice.typeVan)
+  const changeVanType = (type) => {
+    console.log(type)
+       dispatch(setTypeVan(type))
+  }
+
   const styleWagonType = (type, range) => {
     return type === typeVan
       ? `wagon-type ${range}-active`

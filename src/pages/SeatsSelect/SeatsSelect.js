@@ -1,6 +1,6 @@
 import { useGetSeatsQuery } from "../../api/api";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTypeVan, setFilterVansList } from "../../reducers/vansParamsSlice";
 import SeatsTrainDesc from "../../components/SeatsSelectComponent/SeatsTrainDesc";
 import SeatsTicketQty from "../../components/SeatsSelectComponent/SeatsTicketQty";
 import Error from "../../components/Error/Error";
@@ -10,15 +10,9 @@ import Vans from "../../components/SeatsSelectComponent/Vans";
 import "./seatsSelect.css";
 
 export default function SeatsSelect() {
-  const [typeVan, setTypeVan] = useState("");
+  const dispatch = useDispatch()
 
-  const changeVanType = (type) => {
-    setTypeVan(type);
-  };
-
-  // useEffect(() => {
-  //     console.log(typeVan)
-  // }, [])
+  const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
 
   const args = useSelector((state) => state.seatsParamsSlice);
   const {
@@ -37,7 +31,8 @@ export default function SeatsSelect() {
       const filterVans = () => {
       return result.filter((item) => item.coach.class_type === typeVan);
     };
-    const filterVansList = filterVans();
+    dispatch(setFilterVansList(filterVans()))
+    //const filterVansList = filterVans();
 
     return (
       <section className="seats-content">
@@ -52,8 +47,8 @@ export default function SeatsSelect() {
           <SeatsTrainDesc item={args.data.item} />
           <SeatsTicketQty data={result} />
           <section>
-            <VanType changeVanType={changeVanType} typeVan={typeVan} />
-                    {typeVan !== "" ? <Vans filterVansList={filterVansList} typeVan={typeVan } /> : null}
+            <VanType/>
+                    {typeVan !== "" ? <Vans/> : null}
             <div className="seats-scheme standart">
               <span className="scheme_wagon-number">07</span>
               <ul className="scheme_top-seats">
