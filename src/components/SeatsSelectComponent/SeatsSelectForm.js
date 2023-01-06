@@ -1,9 +1,10 @@
-export default function SeatsSelectForm() {
+export default function SeatsSelectForm({ vanChecked, typeVan }) {
+    console.log(vanChecked)
     return (
         <div className="seat-select-form">
 
                         <div className="big-wagon-num">
-                            <p className="big-num">07</p>
+                            <p className="big-num">{drowNumber(index, typeVan)}</p>
                             <p>вагон</p>
                         </div>
                         <div className="wagon-description">

@@ -1,32 +1,17 @@
-import { useState } from "react";
-import { drowVansList } from "../../service/dataTransform";
+import { drowNumber } from "../../service/dataTransform";
 
-export default function VansNumbers({ filterVansList, typeVan }) {
-  const list = drowVansList(filterVansList);
-
-  const [vanChecked, setVanChecked] = useState(list);
-  const changeCheckedVan = (index) => {
-    setVanChecked((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
-  };
-
+export default function VansNumbers({
+  filterVansList,
+  typeVan,
+  vanChecked,
+  changeCheckedVan,
+}) {
   const styleVanNumber = (index) => {
     return vanChecked[index] ? "active-wagon-number" : "wagon-number";
   };
 
   //Поскольку номеров вагонов в API нет, нумерацию придумала сама
-  const shemeNum = {
-    first: 1,
-    second: 6,
-    third: 11,
-    fourth: 16,
-  };
-  const drowNumber = (index, typeVan, shemeNum) => {
-    return shemeNum[typeVan] + index;
-  };
-
+  
   return (
     <div className="wagon-numbers">
       <p className="numbers-title">Вагоны</p>
@@ -38,7 +23,7 @@ export default function VansNumbers({ filterVansList, typeVan }) {
               onClick={() => changeCheckedVan(index)}
               key={index}
             >
-              {drowNumber(index, typeVan, shemeNum)}
+              {drowNumber(index, typeVan)}
             </li>
           );
         })}

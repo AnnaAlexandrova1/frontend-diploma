@@ -45,6 +45,16 @@ const drowVansList = (filterVansList) => {
   return obj;
 };
 
+const drowNumber = (index, typeVan) => {
+    const shemeNum = {
+    first: 1,
+    second: 6,
+    third: 11,
+    fourth: 16,
+  };
+    return shemeNum[typeVan] + index;
+  };
+
 export {
   showTime,
   showDuration,
@@ -52,7 +62,8 @@ export {
   showDurationMinutes,
   showPrice,
   showSeats,
-  drowVansList
+  drowVansList,
+  drowNumber
 };
 
 
