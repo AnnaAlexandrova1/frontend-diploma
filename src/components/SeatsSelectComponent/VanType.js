@@ -10,7 +10,6 @@ export default function VanType() {
   const dispatch = useDispatch()
   let typeVan = useSelector(state => state.vansParamsSlice.typeVan)
   const changeVanType = (type) => {
-    console.log(type)
        dispatch(setTypeVan(type))
   }
 

@@ -1,4 +1,9 @@
-export default function SeatsSelectForm({ vanChecked, typeVan }) {
+import { useSelector } from "react-redux"
+
+export default function SeatsSelectForm() {
+    const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
+    const vanChecked = useSelector(state => state.vansParamsSlice.vanChecked)
+    
     return (
         <div className="seat-select-form">
 

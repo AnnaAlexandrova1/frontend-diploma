@@ -1,6 +1,6 @@
 import { useGetSeatsQuery } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
-import { setTypeVan, setFilterVansList } from "../../reducers/vansParamsSlice";
+import { setFilterVansList } from "../../reducers/vansParamsSlice";
 import SeatsTrainDesc from "../../components/SeatsSelectComponent/SeatsTrainDesc";
 import SeatsTicketQty from "../../components/SeatsSelectComponent/SeatsTicketQty";
 import Error from "../../components/Error/Error";
