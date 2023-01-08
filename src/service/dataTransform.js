@@ -55,8 +55,10 @@ const drowNumber = (index, typeVan) => {
     return shemeNum[typeVan] + index;
 };
   
-      const filterVans = (result, typeVan) => {
-      return result.filter((item) => item.coach.class_type === typeVan);
+const filterVans = (result, typeVan) => {
+
+  let arr = result.filter((item) => item.coach.class_type === typeVan);
+  return arr.map((item ) => ({...item, checked: true}))
     };
 
 export {

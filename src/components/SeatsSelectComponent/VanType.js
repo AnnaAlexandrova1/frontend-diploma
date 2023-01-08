@@ -1,33 +1,41 @@
-import { setTypeVan } from "../../reducers/vansParamsSlice";
+import { setTypeVan, setFilterVansList } from "../../reducers/vansParamsSlice";
 
 import fourth from "../../img/icons/fourthClass.svg";
 import third from "../../img/icons/thirdClass.svg";
 import second from "../../img/icons/secondClass.svg";
 import first from "../../img/icons/firstClass.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { filterVans } from "../../service/dataTransform";
 
 export default function VanType() {
   const dispatch = useDispatch()
-  const p = useSelector(state => state.vansParamsSlice.result)
-  console.log('result from state')
-  console.log(p)
+  // const p = useSelector(state => state.vansParamsSlice.result)
+  // console.log('result from state')
+  // console.log(p)
  
 
   const typeVan = useSelector((state) => state.vansParamsSlice.typeVan)
-  const vanChecked = useSelector((state) => state.vansParamsSlice.vanChecked);
-  const numVan = useSelector((state) => state.vansParamsSlice.numVan);
+  const result = useSelector((state) => state.vansParamsSlice.result)
+  // const vanChecked = useSelector((state) => state.vansParamsSlice.vanChecked);
+  // const numVan = useSelector((state) => state.vansParamsSlice.numVan);
 
   const filterVansList = useSelector(
     (state) => state.vansParamsSlice.filterVansList
-    );
+  );
+  
   const changeVanType = (type) => {
     dispatch(setTypeVan(type))
+    
+    //dispatch(setFilterVansList(arr))
   }
-  
-  console.log('typeVan из типов кагона')
-  console.log(typeVan)
 
-  console.log('filterVansList из типов кагона')
+  // console.log(result)
+  // console.log('typeVan из типов кагона')
+  // console.log(typeVan) 
+  // let arr = filterVans(result, typeVan)
+  //   console.log('при клике')
+  //    console.log(arr)
+  console.log('filterVansList из типов вагона')
   console.log(filterVansList)
   
   const styleWagonType = (type, range) => {

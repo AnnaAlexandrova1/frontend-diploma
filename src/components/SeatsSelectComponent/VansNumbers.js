@@ -1,6 +1,6 @@
 import { drowNumber } from "../../service/dataTransform";
 import { useDispatch, useSelector } from "react-redux";
-import { setVanChecked, setNumVan } from "../../reducers/vansParamsSlice";
+import { setVanChecked, setNumVan, setFilterVansList } from "../../reducers/vansParamsSlice";
 
 export default function VansNumbers() {
   const dispatch = useDispatch()
@@ -12,9 +12,11 @@ export default function VansNumbers() {
     const p = !vanChecked[index]
     dispatch(setVanChecked({ index, p }))
     dispatch(setNumVan(drowNumber(index, typeVan)))
+
+    console.log(vanChecked)
   }
 
-  console.log(vanChecked)
+  
   const styleVanNumber = (index) => {
     return vanChecked[index] ? "active-wagon-number" : "wagon-number";
   };

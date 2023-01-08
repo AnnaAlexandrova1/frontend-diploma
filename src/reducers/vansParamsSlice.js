@@ -20,14 +20,15 @@ const vansParamsSlice = createSlice({
     resetVans: (state) => initialState,
     setFilterVansList: (prevState, action) => ({
         ...prevState,
-          vanChecked: drowVansList(action.payload),
-          filterVansList: action.payload
+          //vanChecked: drowVansList(action.payload),
+          
+          filterVansList:  action.payload
     }),
         setTypeVan: (prevState, action) => 
             ({
                 ...prevState,
             typeVan: action.payload,
-            filterVansList: filterVans(prevState.result, action.payload)
+            filterVansList:  filterVans(prevState.result, action.payload) 
             })
         ,
       setVanChecked: (prevState, action) => ({

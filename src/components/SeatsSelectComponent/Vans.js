@@ -1,6 +1,7 @@
 import VansNumbers from "./VansNumbers";
 import SeatsSelectForm from "./SeatsSelectForm";
 import {  useSelector } from "react-redux";
+import SeatsSheme from "./Shemes/SeatsSheme";
 
 export default function Vans() {
   const filterVansList = useSelector(
@@ -24,6 +25,7 @@ export default function Vans() {
       <div className="seats-disclamer">
         <p>11 человек выбирают места в этом поезде</p>
       </div>
+      <SeatsSheme />
     </>
   );
 }
