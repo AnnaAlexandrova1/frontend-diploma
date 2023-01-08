@@ -8,11 +8,28 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function VanType() {
   const dispatch = useDispatch()
-  let typeVan = useSelector(state => state.vansParamsSlice.typeVan)
-  const changeVanType = (type) => {
-       dispatch(setTypeVan(type))
-  }
+  const p = useSelector(state => state.vansParamsSlice.result)
+  console.log('result from state')
+  console.log(p)
+ 
 
+  const typeVan = useSelector((state) => state.vansParamsSlice.typeVan)
+  const vanChecked = useSelector((state) => state.vansParamsSlice.vanChecked);
+  const numVan = useSelector((state) => state.vansParamsSlice.numVan);
+
+  const filterVansList = useSelector(
+    (state) => state.vansParamsSlice.filterVansList
+    );
+  const changeVanType = (type) => {
+    dispatch(setTypeVan(type))
+  }
+  
+  console.log('typeVan из типов кагона')
+  console.log(typeVan)
+
+  console.log('filterVansList из типов кагона')
+  console.log(filterVansList)
+  
   const styleWagonType = (type, range) => {
     return type === typeVan
       ? `wagon-type ${range}-active`

@@ -1,6 +1,7 @@
 import { useGetSeatsQuery } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterVansList } from "../../reducers/vansParamsSlice";
+import { setFilterVansList, setResult } from "../../reducers/vansParamsSlice";
+import { filterVans } from "../../service/dataTransform";
 import SeatsTrainDesc from "../../components/SeatsSelectComponent/SeatsTrainDesc";
 import SeatsTicketQty from "../../components/SeatsSelectComponent/SeatsTicketQty";
 import Error from "../../components/Error/Error";
@@ -15,6 +16,8 @@ export default function SeatsSelect() {
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
 
   const args = useSelector((state) => state.seatsParamsSlice);
+  console.log('args.req')
+  console.log(args.req)
   const {
     currentData: result,
     isError,
@@ -26,12 +29,13 @@ export default function SeatsSelect() {
   if (isFetching) {
     return <IsLoading />;
   }
+  
 
   if (result) {
-      const filterVans = () => {
-      return result.filter((item) => item.coach.class_type === typeVan);
-    };
-    dispatch(setFilterVansList(filterVans()))
+    console.log(`вагоны в поезде`)
+    console.log(result)
+    dispatch(setResult(result))
+   
     //const filterVansList = filterVans();
 
     return (

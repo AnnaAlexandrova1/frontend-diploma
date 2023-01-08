@@ -1,6 +1,6 @@
 import { drowNumber } from "../../service/dataTransform";
 import { useDispatch, useSelector } from "react-redux";
-import { setVanChecked } from "../../reducers/vansParamsSlice";
+import { setVanChecked, setNumVan } from "../../reducers/vansParamsSlice";
 
 export default function VansNumbers() {
   const dispatch = useDispatch()
@@ -8,17 +8,18 @@ export default function VansNumbers() {
   const filterVansList = useSelector(state => state.vansParamsSlice.filterVansList)
   const vanChecked = useSelector(state => state.vansParamsSlice.vanChecked)
 
-
   const changeCheckedVan = (index) => {
     const p = !vanChecked[index]
-    dispatch(setVanChecked({ index, p}))
+    dispatch(setVanChecked({ index, p }))
+    dispatch(setNumVan(drowNumber(index, typeVan)))
   }
 
   console.log(vanChecked)
   const styleVanNumber = (index) => {
     return vanChecked[index] ? "active-wagon-number" : "wagon-number";
   };
-  
+  console.log('filterVansList в номерах вагонов')
+  console.log(filterVansList)
   //Поскольку номеров вагонов в API нет, нумерацию придумала сама
   
   return (

@@ -7,20 +7,15 @@ export default function Vans() {
     (state) => state.vansParamsSlice.filterVansList
   );
 
-  //   setVanChecked((prevState) => ({
-  //     ...prevState,
-  //     [index]: !prevState[index],
-  //   }));
-  //   setNum(num)
-  // };
-
-  if (filterVansList.length < 1) {
+  if (filterVansList.length < 1 || !filterVansList) {
     return (
       <div className="wagon-numbers">
         <p className="number-disclamer">Нет вагонов данного типа</p>
       </div>
     );
   }
+  console.log('filterVansList из стейта')
+  console.log(filterVansList)
 
   return (
     <>

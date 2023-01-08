@@ -53,7 +53,11 @@ const drowNumber = (index, typeVan) => {
     fourth: 16,
   };
     return shemeNum[typeVan] + index;
-  };
+};
+  
+      const filterVans = (result, typeVan) => {
+      return result.filter((item) => item.coach.class_type === typeVan);
+    };
 
 export {
   showTime,
@@ -63,7 +67,8 @@ export {
   showPrice,
   showSeats,
   drowVansList,
-  drowNumber
+  drowNumber,
+  filterVans
 };
 
 
