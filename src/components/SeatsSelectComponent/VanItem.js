@@ -8,8 +8,6 @@ export default function VanItem({item}) {
   const filterVansList = useSelector(
     (state) => state.vansParamsSlice.filterVansList
   );
-  
-  console.log(item)
 
   return (
     <div className="seat-select-form">

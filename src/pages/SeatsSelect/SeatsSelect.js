@@ -17,8 +17,8 @@ export default function SeatsSelect() {
  // const filterVansList = useSelector(state => state.vansParamsSlice.filterVansList)
 
   const args = useSelector((state) => state.seatsParamsSlice);
-  console.log('args.req')
-  console.log(args.req)
+  // console.log('args.req')
+  // console.log(args.req)
   const {
     currentData: result,
     isError,
@@ -33,8 +33,8 @@ export default function SeatsSelect() {
   
 
   if (result) {
-    console.log(`вагоны в поезде`)
-    console.log(result)
+    // console.log(`вагоны в поезде`)
+    // console.log(result)
     dispatch(setResult(result))
    
     //const filterVansList = filterVans();

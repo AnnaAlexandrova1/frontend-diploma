@@ -35,8 +35,8 @@ export default function VanType() {
   // let arr = filterVans(result, typeVan)
   //   console.log('при клике')
   //    console.log(arr)
-  console.log('filterVansList из типов вагона')
-  console.log(filterVansList)
+  // console.log('filterVansList из типов вагона')
+  // console.log(filterVansList)
   
   const styleWagonType = (type, range) => {
     return type === typeVan

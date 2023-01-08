@@ -17,8 +17,6 @@ export default function VansNumbers() {
     )[0].checked
     return status ? "active-wagon-number" : "wagon-number";
   };
-  console.log('filterVansList в номерах вагонов')
-  console.log(filterVansList)
   //Поскольку номеров вагонов в API нет, нумерацию придумала сама
   
   return (

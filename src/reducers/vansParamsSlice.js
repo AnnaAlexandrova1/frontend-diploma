@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { drowVansList, filterVans } from "../service/dataTransform";
+import {  filterVans } from "../service/dataTransform";
 
 const initialState = {
   result: [],
   typeVan: "",
   filterVansList: [],
-  numVan: "",
 };
 
 const vansParamsSlice = createSlice({
@@ -20,7 +19,6 @@ const vansParamsSlice = createSlice({
     setFilterVansList: (prevState, action) => ({
         ...prevState,
           //vanChecked: drowVansList(action.payload),
-          
           filterVansList:  action.payload
     }),
         setTypeVan: (prevState, action) => 
@@ -41,13 +39,9 @@ const vansParamsSlice = createSlice({
       }
     })
       }),
-      setNumVan:(prevState, action) => ({
-        ...prevState,
-        numVan: action.payload,
-      }),
   },
 });
 
-export const { setResult, resetVans, setFilterVansList, setTypeVan, setVanChecked, setNumVan } =
+export const { setResult, resetVans, setFilterVansList, setTypeVan, setVanChecked } =
   vansParamsSlice.actions;
 export default vansParamsSlice.reducer;
