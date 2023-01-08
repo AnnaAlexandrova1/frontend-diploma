@@ -4,21 +4,18 @@ import { setVanChecked, setNumVan, setFilterVansList } from "../../reducers/vans
 
 export default function VansNumbers() {
   const dispatch = useDispatch()
-  const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
   const filterVansList = useSelector(state => state.vansParamsSlice.filterVansList)
-  const vanChecked = useSelector(state => state.vansParamsSlice.vanChecked)
 
-  const changeCheckedVan = (index) => {
-    const p = !vanChecked[index]
-    dispatch(setVanChecked({ index, p }))
-    dispatch(setNumVan(drowNumber(index, typeVan)))
-
-    console.log(vanChecked)
+  const changeCheckedVan = (id) => {
+    dispatch(setVanChecked(id))
   }
 
   
-  const styleVanNumber = (index) => {
-    return vanChecked[index] ? "active-wagon-number" : "wagon-number";
+  const styleVanNumber = (id) => {
+    let status = filterVansList.filter(item => 
+        item.coach._id === id
+    )[0].checked
+    return status ? "active-wagon-number" : "wagon-number";
   };
   console.log('filterVansList в номерах вагонов')
   console.log(filterVansList)
@@ -31,11 +28,11 @@ export default function VansNumbers() {
         {filterVansList.map((item, index) => {
           return (
             <li
-              className={styleVanNumber(index)}
-              onClick={() => changeCheckedVan(index)}
+              className={styleVanNumber(item.coach._id)}
+              onClick={() => changeCheckedVan(item.coach._id)}
               key={index}
             >
-              {drowNumber(index, typeVan)}
+              {`0${item.coach._id.slice(-1)}`}
             </li>
           );
         })}

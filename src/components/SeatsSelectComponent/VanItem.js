@@ -5,15 +5,16 @@ import PlatzOrCupe from "./PlatzOrCupe";
 export default function VanItem({item}) {
   const typeVan = useSelector((state) => state.vansParamsSlice.typeVan);
   const vanChecked = useSelector((state) => state.vansParamsSlice.vanChecked);
-  const numVan = useSelector((state) => state.vansParamsSlice.numVan);
   const filterVansList = useSelector(
     (state) => state.vansParamsSlice.filterVansList
-    );
+  );
+  
+  console.log(item)
 
   return (
     <div className="seat-select-form">
       <div className="big-wagon-num">
-        <p className="big-num">{numVan}</p>
+        <p className="big-num">{`0${item.coach._id.slice(-1)}` }</p>
         <p>вагон</p>
       </div>
       <div className="wagon-description">

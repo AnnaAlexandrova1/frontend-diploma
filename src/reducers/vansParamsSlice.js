@@ -5,7 +5,6 @@ const initialState = {
   result: [],
   typeVan: "",
   filterVansList: [],
-  vanChecked: {},
   numVan: "",
 };
 
@@ -33,10 +32,14 @@ const vansParamsSlice = createSlice({
         ,
       setVanChecked: (prevState, action) => ({
       ...prevState,
-        vanChecked: {
-            ...prevState.vanChecked,
-           [action.payload.index]: action.payload.p
-        }
+        filterVansList: prevState.filterVansList.map((item) => {
+      //return ({...item, checked: !item.checked})
+      if (item.coach._id === action.payload) {
+        return {...item, checked: !item.checked}
+      } else {
+        return item
+      }
+    })
       }),
       setNumVan:(prevState, action) => ({
         ...prevState,

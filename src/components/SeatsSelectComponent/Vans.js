@@ -1,7 +1,7 @@
 import VansNumbers from "./VansNumbers";
-import SeatsSelectForm from "./SeatsSelectForm";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SeatsSheme from "./Shemes/SeatsSheme";
+import VanItem from "./VanItem";
 
 export default function Vans() {
   const filterVansList = useSelector(
@@ -15,17 +15,25 @@ export default function Vans() {
       </div>
     );
   }
-  console.log('filterVansList из стейта')
-  console.log(filterVansList)
+  console.log("filterVansList из стейта");
+  console.log(filterVansList);
 
   return (
     <>
       <VansNumbers />
-      <SeatsSelectForm />
-      <div className="seats-disclamer">
-        <p>11 человек выбирают места в этом поезде</p>
-      </div>
-      <SeatsSheme />
+      {filterVansList.map((item) => {
+        if (item.coach._id) {
+          return <>
+            <VanItem item={ item} />
+          <div className="seats-disclamer">
+            <p>11 человек выбирают места в этом поезде</p>
+          </div>
+          <SeatsSheme />
+        </>
+        } else {
+          return null
+        }
+      })}
     </>
   );
 }
