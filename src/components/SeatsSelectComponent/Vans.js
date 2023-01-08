@@ -28,7 +28,7 @@ export default function Vans() {
           <div className="seats-disclamer">
             <p>11 человек выбирают места в этом поезде</p>
           </div>
-          <SeatsSheme />
+            <SeatsSheme item={item} />
         </>
         } else {
           return null
