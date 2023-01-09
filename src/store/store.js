@@ -4,11 +4,13 @@ import { api } from "../api/api";
 import routesParamsSlice from "../reducers/routesParamsSlice";
 import seatsParamsSlice from "../reducers/seatsParamsSlice";
 import vansParamsSlice from "../reducers/vansParamsSlice";
+import trainsParamsSlice from "../reducers/trainsParamsSlise";
 
 const store = configureStore({
   reducer: {
     routesParamsSlice: routesParamsSlice,
     seatsParamsSlice: seatsParamsSlice,
+    trainsParamsSlice: trainsParamsSlice,
     vansParamsSlice: vansParamsSlice,
     [api.reducerPath]: api.reducer,
   },

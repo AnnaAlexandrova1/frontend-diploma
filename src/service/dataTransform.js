@@ -34,6 +34,44 @@ const showSeats = (arg) => {
   return arg > 0 ? arg : 0;
 };
 
+const sortByTime = (arr) => {
+    
+    let arr2 = arr.slice().sort((a, b) => {
+      if(a.departure.from.datetime > b.departure.from.datetime){
+   return 1
+    }
+    if(a.departure.from.datetime < b.departure.from.datetime){
+   return -1
+    }
+    return 0
+    })
+    return arr2
+}
+const sortByPrice = (arr) => {
+    let arr2 = arr.slice().sort((a, b) => {
+      if(a.min_price > b.min_price){
+   return 1
+    }
+    if(a.min_price < b.min_price){
+   return -1
+    }
+    return 0
+    })
+    return arr2
+}
+const sortByDuration = (arr) => {
+    let arr2 = arr.slice().sort((a, b) => {
+      if(a.departure.duration > b.departure.duration){
+   return 1
+    }
+    if(a.departure.duration < b.departure.duration){
+   return -1
+    }
+    return 0
+    })
+    return arr2
+}
+
 const drowVansList = (filterVansList) => {
   if (filterVansList.length === 0 || !filterVansList.length) {
     return;
@@ -59,7 +97,8 @@ const filterVans = (result, typeVan) => {
 
   let arr = result.filter((item) => item.coach.class_type === typeVan);
   return arr.map((item ) => ({...item, checked: true}))
-    };
+};
+    
 
 export {
   showTime,
@@ -70,7 +109,10 @@ export {
   showSeats,
   drowVansList,
   drowNumber,
-  filterVans
+  filterVans,
+  sortByTime,
+  sortByPrice,
+  sortByDuration
 };
 
 

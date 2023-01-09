@@ -5,13 +5,16 @@ import TrainsList from "../../components/Trains/TrainsList";
 import Pagination from "../../components/Trains/Pagination";
 import Error from '../../components/Error/Error'
 import IsLoading from '../../components/IsLoading/IsLoading'
-import { useSelector } from "react-redux"
+import { setTrainsResult } from '../../reducers/trainsParamsSlise';
+import { useDispatch, useSelector } from "react-redux"
 import { useGetRoutesQuery } from "../../api/api"
 import '../selectOptions.css'
 
 
 export default function TrainSelect() {
+    const dispatch = useDispatch()
     const list = useSelector(state => state.routesParamsSlice)
+    const trainsList = useSelector(state => state.trainsParamsSlice.trainsList)
   
     const makeArgs = (list) => {
         let args = ''
@@ -32,13 +35,14 @@ export default function TrainSelect() {
         return (<IsLoading />)
     }
     if (result) {
-        console.log(`поезда ${result}`)
-         console.log(result)
+        dispatch(setTrainsResult(result))
+        console.log(`поезда`)
+        console.log(trainsList)
         
          return (
         <section className="trains">
-                 <TrainsHead count={result.total_count } />
-                 <TrainsList items={ result.items} />
+                 <TrainsHead count={trainsList.total_count } />
+                 <TrainsList />
             <Pagination />
         </section>
     )

@@ -6,11 +6,9 @@ import Seat from "./Seat";
 
 export default function SeatsSheme({item}) {
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
-  const filterVansList = useSelector(state => state.vansParamsSlice.filterVansList)
-  console.log(filterVansList)
 
   const styleAvailable = (el) => {
-    return el.available ? <li class="available-place" key={el.index}>{el.index}</li> : <li className="place_is_taken">{el.index}</li>
+    return el.available ? <li className="available-place" key={el.index}>{el.index}</li> : <li className="place_is_taken">{el.index}</li>
   }
 
   switch (typeVan) {
@@ -25,6 +23,4 @@ export default function SeatsSheme({item}) {
     default: 
       return (<div> Ошибка! Что-то пошло не так. </div>)
   }
-    
-    
 }
