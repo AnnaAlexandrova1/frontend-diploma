@@ -28,11 +28,11 @@ export default function FilterTrainSelect() {
           <div className="dateFilter">
             <div className="dateFilter_departure">
               <h2>Дата поездки</h2>
-              <input type="date" className="dateFilter_input filter_departure-date" placeholder="ДД/ММ/ГГ"/>
+              <input type="date" className="dateFilter_input filter_departure-date" placeholder="ДД/ММ/ГГ" onChange={(evt) => {dispatch(setOneParam({key: 'date_start', value: evt.target.value}))}}/>
             </div>
             <div className="dateFilter_departure-back">
               <h2>Дата возвращения</h2>
-              <input type="date" className="dateFilter_input filter_departure-date-back" placeholder="ДД/ММ/ГГ"/>
+              <input type="date" className="dateFilter_input filter_departure-date-back" placeholder="ДД/ММ/ГГ" onChange={(evt) => {dispatch(setOneParam({key: 'date_end', value: evt.target.value}))}}/>
             </div>
           </div>
           <div className="options">

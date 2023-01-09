@@ -21,14 +21,14 @@ export default function Vans() {
   return (
     <>
       <VansNumbers />
-      {filterVansList.map((item) => {
+      {filterVansList.map((item, index) => {
         if (item.coach._id) {
           return <>
-            <VanItem item={ item} />
+            <VanItem item={item} key={item.coach._id} />
           <div className="seats-disclamer">
             <p>11 человек выбирают места в этом поезде</p>
           </div>
-            <SeatsSheme item={item} />
+            <SeatsSheme item={item} key={index} />
         </>
         } else {
           return null
