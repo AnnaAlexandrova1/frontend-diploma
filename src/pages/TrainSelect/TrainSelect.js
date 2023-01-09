@@ -1,6 +1,6 @@
 //import TrainsHead from "../../components/Trains/TrainsHead";
 import TrainsHead from '../../components/Trains/TrainsHead'
-
+import { makeArgs } from '../../service/dataTransform';
 import TrainsList from "../../components/Trains/TrainsList";
 import Pagination from "../../components/Trains/Pagination";
 import Error from '../../components/Error/Error'
@@ -16,18 +16,11 @@ export default function TrainSelect() {
     const list = useSelector(state => state.routesParamsSlice)
     const trainsList = useSelector(state => state.trainsParamsSlice.trainsList)
   
-    const makeArgs = (list) => {
-        let args = ''
-        for (let key in list) {
-        if (list[key] !== '') {
-           args = args + `${key}=${list[key]}&` 
-        }
-    }
-      return args.slice(0, -1)
-    }
+  
     const args = makeArgs(list)
+    console.log(args)
     const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
-    
+    console.log(result)
     if (isError) {
         return ( <Error />)
     }

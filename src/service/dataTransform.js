@@ -1,9 +1,26 @@
+const vanClasses = {
+  first: 'first',
+  second: 'second',
+  third: 'third',
+  fourth: 'fourth'
+}
+
 function showTime(timestamp) {
   var d = new Date(timestamp);
   let timeStampCon = d.getHours() + ":" + d.getMinutes();
 
   return timeStampCon;
 }
+
+  const makeArgs = (list) => {
+        let args = ''
+        for (let key in list) {
+        if (list[key] !== '' && list[key]) {
+           args = args + `${key}=${list[key]}&` 
+        }
+    }
+      return args.slice(0, -1)
+    }
 
 function showDuration(time) {
   let hours = Math.floor(time / 60 / 60);
@@ -112,7 +129,10 @@ export {
   filterVans,
   sortByTime,
   sortByPrice,
-  sortByDuration
+  sortByDuration,
+  makeArgs,
 };
+export { vanClasses };
+
 
 

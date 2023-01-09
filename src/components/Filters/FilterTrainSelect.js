@@ -1,5 +1,27 @@
+import { useDispatch, useSelector } from "react-redux"
+import { useSearchParams } from "react-router-dom"
+import { setOneParam } from "../../reducers/routesParamsSlice"
+import { vanClasses } from "../../service/dataTransform"
 
 export default function FilterTrainSelect() {
+  const dispatch = useDispatch()
+
+  const handleChangeTypeVan = (evt) => {
+    
+    if (evt.target.value === vanClasses.second) {
+        evt.target.checked ? dispatch(setOneParam({key: 'have_second_class', value: true})) : dispatch(setOneParam({key: 'have_second_class', value: false}))
+      } else  if (evt.target.value === vanClasses.first) {
+        evt.target.checked ? dispatch(setOneParam({key: 'have_first_class', value: true})) : dispatch(setOneParam({key: 'have_first_class', value: false}))
+      } else if (evt.target.value === vanClasses.third) {
+        evt.target.checked ? dispatch(setOneParam({key: 'have_third_class', value: true})) : dispatch(setOneParam({key: 'have_third_class', value: false}))
+      } else if (evt.target.value === vanClasses.fourth) {
+        evt.target.checked ? dispatch(setOneParam({key: 'have_fourth_class', value: true})) : dispatch(setOneParam({key: 'have_fourth_class', value: false}))
+      } else if (evt.target.value === 'have_wifi') {
+        evt.target.checked ? dispatch(setOneParam({key: 'have_wifi', value: true})) : dispatch(setOneParam({key: 'have_wifi', value: false}))
+      } else if (evt.target.value === 'is_express') {
+        evt.target.checked ? dispatch(setOneParam({key: 'is_express', value: true})) : dispatch(setOneParam({key: 'is_express', value: false}))
+      }
+    }
     return (
         <section className="filters">
         <div className="filters-container">
@@ -20,7 +42,7 @@ export default function FilterTrainSelect() {
                 <p>Купе</p>
                 <div>
                   <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" value={vanClasses.second} onClick={(evt) => handleChangeTypeVan(evt) } />
                     <span className="slider round"></span>
                   </label>
                 </div>
@@ -30,7 +52,7 @@ export default function FilterTrainSelect() {
                 <p>Плацкарт</p>
                 <div>
                   <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" value={vanClasses.third}  onClick={(evt) => handleChangeTypeVan(evt) }/>
                     <span className="slider round"></span>
                   </label>
                 </div>
@@ -41,7 +63,7 @@ export default function FilterTrainSelect() {
                 <div>
                   <label className="switch">
                     <input type="checkbox"/>
-                    <span className="slider round"></span>
+                    <span className="slider round" value={vanClasses.fourth}  onClick={(evt) => handleChangeTypeVan(evt) }></span>
                   </label>
                 </div>
               </li>
@@ -50,7 +72,7 @@ export default function FilterTrainSelect() {
                 <p>Люкс</p>
                 <div>
                   <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" value={vanClasses.first} onClick={(evt) => handleChangeTypeVan(evt) }/>
                     <span className="slider round"></span>
                   </label>
                 </div>
@@ -60,7 +82,7 @@ export default function FilterTrainSelect() {
                 <p>Wi-Fi</p>
                 <div>
                   <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" value="have_wifi" onClick={(evt) => handleChangeTypeVan(evt) }/>
                     <span className="slider round"></span>
                   </label>
                 </div>
@@ -70,7 +92,7 @@ export default function FilterTrainSelect() {
                 <p>Экспресс</p>
                 <div>
                   <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" value="is_express" onClick={(evt) => handleChangeTypeVan(evt) }/>
                     <span className="slider round"></span>
                   </label>
                 </div>

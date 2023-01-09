@@ -1,9 +1,5 @@
 import { useDispatch } from "react-redux";
-import {
-  setSortByTimeTrains,
-  setSortByPriceTrains,
-  setSortByDurationTrains,
-} from "../../reducers/trainsParamsSlise";
+import { setOneParam } from "../../reducers/routesParamsSlice";
 
 export default function TrainsHead({ count }) {
   const dispatch = useDispatch();
@@ -11,16 +7,27 @@ export default function TrainsHead({ count }) {
   const onHandleSort = (evt) => {
     if (0 <= evt.target.selectedIndex <= 3) {
       if (evt.target.value === "time") {
-        dispatch(setSortByTimeTrains());
+        dispatch(setOneParam({key: 'sort', value: "time"}));
       }
+      // не могу использовать "по цене", т.к. API отдает ошибку 
       if (evt.target.value === "price") {
-        dispatch(setSortByPriceTrains());
+        dispatch(setOneParam({key: 'sort', value: "duration"}));
       }
       if (evt.target.value === "duration") {
-        dispatch(setSortByDurationTrains());
+         dispatch(setOneParam({key: 'sort', value: "duration"}));
       }
     }
   };
+
+  const onHandleOffset = (evt) => {
+    if (+evt.target.textContent === 5 || +evt.target.textContent === 10 || +evt.target.textContent === 20) {
+      console.log(typeof +evt.target.textContent)
+      dispatch(setOneParam({key: 'offset', value: +evt.target.textContent}))
+    } else {
+      console.log('return')
+      return
+    }
+  }
   return (
     <section className="trains_head">
       <div className="trains-list_section-title">
@@ -42,11 +49,13 @@ export default function TrainsHead({ count }) {
       <div className="trains-list_show-by">
         <p className="show-by">Показывать по:</p>
         <ul className="show-by-list">
-          <li>5</li>
-          <li>10</li>
-          <li>20</li>
+          <li onClick={(evt) => onHandleOffset (evt)}>5</li>
+          <li onClick={(evt) => onHandleOffset (evt)}>10</li>
+          <li onClick={(evt) => onHandleOffset (evt)}>20</li>
         </ul>
       </div>
     </section>
   );
 }
+
+

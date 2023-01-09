@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sortByTime, sortByPrice, sortByDuration } from "../service/dataTransform";
+import { makeArgs } from "../service/dataTransform";
 
 const initialState = {
     trainsList: [],
-    printTrainsList: []
+    printTrainsList: [],
+    request: ''
 };
+
 
 const trainsParamsSlice = createSlice({
   name: "trainsParams",
@@ -15,21 +18,22 @@ const trainsParamsSlice = createSlice({
             trainsList: action.payload,
             printTrainsList: sortByTime(action.payload.items)
         }),
-    setSortByTimeTrains: (prevState) => ({
-          ...prevState,
-            printTrainsList: sortByTime(prevState.trainsList.items)
-        }),
-    setSortByPriceTrains: (prevState) => ({
-          ...prevState,
-            printTrainsList: sortByPrice(prevState.trainsList.items)
-        }),
-    setSortByDurationTrains: (prevState) => ({
-          ...prevState,
-            printTrainsList: sortByDuration(prevState.trainsList.items)
-        })
+    // setRequest: (prevState, action) => ({
+    //       ...prevState,
+    //         request: makeArgs() 
+    //     }),
+    // setSortByPriceTrains: (prevState) => ({
+    //       ...prevState,
+    //         printTrainsList: sortByPrice(prevState.trainsList.items)
+    //     }),
+    // setSortByDurationTrains: (prevState) => ({
+    //       ...prevState,
+    //         printTrainsList: sortByDuration(prevState.trainsList.items)
+    //     })
     }
 });
 
-export const { setTrainsResult, setSortByTimeTrains, setSortByPriceTrains, setSortByDurationTrains } =
-  trainsParamsSlice.actions;
+export const { setTrainsResult,
+    //setSortByTimeTrains, setSortByPriceTrains, setSortByDurationTrains 
+} = trainsParamsSlice.actions;
 export default trainsParamsSlice.reducer;
