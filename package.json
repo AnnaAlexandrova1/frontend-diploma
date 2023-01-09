@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://annaalexandrova1.github.io/frontend-diploma",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
