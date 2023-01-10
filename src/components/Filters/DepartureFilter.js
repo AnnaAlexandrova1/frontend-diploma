@@ -6,19 +6,6 @@ import { setOneParam } from "../../reducers/routesParamsSlice";
 export function DepartureFilter() {
   const dispatch = useDispatch();
 
-  const start_departure_hour_from = useSelector(
-    (state) => state.routesParamsSlice.start_departure_hour_from
-  );
-  const start_departure_hour_to = useSelector(
-    (state) => state.routesParamsSlice.start_departure_hour_to
-  );
-  const start_arrival_hour_from = useSelector(
-    (state) => state.routesParamsSlice.start_arrival_hour_from
-  );
-  const start_arrival_hour_to = useSelector(
-    (state) => state.routesParamsSlice.start_arrival_hour_to
-  );
-
   const [timeDeparture, setTimeDeparture] = useState({
     from: 0,
     to: 24,
@@ -36,9 +23,14 @@ export function DepartureFilter() {
     setTimeDeparture({
       ...timeDeparture,
       pozFrom: timeDeparture.pozFrom + data.deltaX,
-      from: Math.floor((timeDeparture.pozFrom / 281) * 24)
-      
-    })
+      from: Math.floor((timeDeparture.pozFrom / 281) * 24),
+    });
+    dispatch(
+      setOneParam({
+        key: "start_departure_hour_from",
+        value: timeDeparture.from,
+      })
+    );
   };
   const handleTimeDepartureTo = (e, data) => {
     setTimeDeparture({
@@ -46,23 +38,32 @@ export function DepartureFilter() {
       pozTo: timeDeparture.pozTo + data.deltaX,
       to: Math.floor((timeDeparture.pozTo / 281) * 24),
     });
-    };
-    
-const handleTimeArrival = (e, data) => {
+    dispatch(
+      setOneParam({ key: "start_departure_hour_to", value: timeDeparture.to })
+    );
+  };
+
+  const handleTimeArrival = (e, data) => {
     setTimeArrival({
       ...timeArrival,
       pozFrom: timeArrival.pozFrom + data.deltaX,
       from: Math.floor((timeArrival.pozFrom / 281) * 24),
     });
-    };
-    
-     const handleTimeArrivalTo = (e, data) => {
+    dispatch(
+      setOneParam({ key: "start_arrival_hour_from", value: timeArrival.from })
+    );
+  };
+
+  const handleTimeArrivalTo = (e, data) => {
     setTimeArrival({
       ...timeArrival,
       pozTo: timeArrival.pozTo + data.deltaX,
       to: Math.floor((timeArrival.pozTo / 281) * 24),
     });
-    };
+    dispatch(
+      setOneParam({ key: "start_arrival_hour_to", value: timeArrival.to })
+    );
+  };
 
   return (
     <div className="time-filter">
@@ -108,7 +109,10 @@ const handleTimeArrival = (e, data) => {
             <div className="start-cost" style={{ left: timeDeparture.pozFrom }}>
               {timeDeparture.from}:00
             </div>
-            <div className="limit-cost" style={{ left: timeDeparture.pozTo -50 }}>
+            <div
+              className="limit-cost"
+              style={{ left: timeDeparture.pozTo - 50 }}
+            >
               {timeDeparture.to}:00
             </div>
             {/* <div className="max-cost">24:00</div> */}
@@ -117,34 +121,35 @@ const handleTimeArrival = (e, data) => {
 
         <div className="arrival-time">
           <h3 className="time-filter-title arrival-title">Время прибытия</h3>
-                  <div className="circle-container time-container">
+          <div className="circle-container time-container">
             <Draggable
               axis="x"
               bounds={{ left: 0, right: 281 }}
               onDrag={handleTimeArrival}
             >
-            <div
-              className="time-circle-1"
-            ></div></Draggable>
+              <div className="time-circle-1"></div>
+            </Draggable>
             <div className="timeline-gray"></div>
             {/* <div
               className="timeline-colored"
               style={{ left: "52px", right: "136px" }}
                       ></div> */}
-                      <Draggable
+            <Draggable
               axis="x"
               bounds={{ left: -281, right: 0 }}
               onDrag={handleTimeArrivalTo}
             >
-            <div
-              className="time-circle-2"
-            ></div></Draggable>
+              <div className="time-circle-2"></div>
+            </Draggable>
           </div>
           <div className="cost-container time-container">
             <div className="start-cost" style={{ left: timeArrival.pozFrom }}>
               {timeArrival.from}:00
             </div>
-            <div className="limit-cost" style={{ left: timeArrival.pozTo - 50 }}>
+            <div
+              className="limit-cost"
+              style={{ left: timeArrival.pozTo - 50 }}
+            >
               {timeArrival.to}:00
             </div>
             {/* <div className="max-cost">24:00</div> */}
