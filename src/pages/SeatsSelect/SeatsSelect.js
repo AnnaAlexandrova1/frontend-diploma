@@ -54,7 +54,7 @@ export default function SeatsSelect() {
           <SeatsTicketQty data={result} />
           <section>
             <VanType/>
-                    {typeVan !== "" ? <Vans/> : null}
+            {typeVan !== "" ? <Vans /> : null}
 
           </section>
         </div>

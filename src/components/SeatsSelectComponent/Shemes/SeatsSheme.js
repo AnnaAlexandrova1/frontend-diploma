@@ -8,7 +8,7 @@ export default function SeatsSheme({item}) {
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
 
   const styleAvailable = (el) => {
-    return el.available ? <li className="available-place" key={el.index}>{el.index}</li> : <li className="place_is_taken">{el.index}</li>
+    return el.available ? <li className="available-place" key={el._id}>{el.index}</li> : <li className="place_is_taken">{el.index}</li>
   }
 
   switch (typeVan) {
