@@ -1,4 +1,4 @@
-import Draggable, { DraggableCore } from "react-draggable";
+import Draggable from "react-draggable";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOneParam } from "../../reducers/routesParamsSlice";
