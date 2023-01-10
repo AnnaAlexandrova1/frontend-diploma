@@ -1,9 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useSearchParams } from "react-router-dom"
+import PriceFilter from "./PriceFilter"
+
 import { setOneParam } from "../../reducers/routesParamsSlice"
 import { vanClasses } from "../../service/dataTransform"
+import { useState } from "react"
+
 
 export default function FilterTrainSelect() {
+  
+
   const dispatch = useDispatch()
 
   const handleChangeTypeVan = (evt) => {
@@ -21,7 +26,10 @@ export default function FilterTrainSelect() {
       } else if (evt.target.value === 'is_express') {
         evt.target.checked ? dispatch(setOneParam({key: 'is_express', value: true})) : dispatch(setOneParam({key: 'is_express', value: false}))
       }
-    }
+  }
+  
+
+
     return (
         <section className="filters">
         <div className="filters-container">
@@ -99,22 +107,7 @@ export default function FilterTrainSelect() {
               </li>
             </ul>
           </div>
-          <div className="price-filter">
-            <h2 className="price-filter-title">Cтоимость</h2>
-            <span className="start-cost-title">От</span>
-            <span className="max-cost-title">До</span>
-            <div className="circle-container">
-              <div className="circle-1" draggable="true" style={{left: "0px"}}></div>
-              <div className="line-gray "></div>
-              <div className="line-colored" style={{left: "12px", right: "135px"}}></div>
-              <div className="circle-2" draggable="true" style={{left: "147px"}}></div>
-            </div>
-            <div className="cost-container">
-              <div className="start-cost" style={{left: "0px"}}>1920</div>
-              <div className="limit-cost" style={{left: "103px"}}>4500</div>
-              <div className="max-cost">7000</div>
-            </div>
-          </div>
+              <PriceFilter />
           <div className="time-filter">
             <div className="departure_time-filters_container">
               <div className="time-filter_title-container">

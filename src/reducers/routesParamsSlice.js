@@ -15,7 +15,7 @@ const initialState = {
   have_air_conditioning: false,
   have_express: false,
   price_from: 0,
-  price_to: null,
+  price_to: 15000,
   start_departure_hour_from: "",
   start_departure_hour_to: "",
   start_arrival_hour_from: "",
