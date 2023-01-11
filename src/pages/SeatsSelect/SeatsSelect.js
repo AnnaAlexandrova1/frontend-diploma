@@ -1,13 +1,13 @@
 import { useGetSeatsQuery } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterVansList, setResult } from "../../reducers/vansParamsSlice";
-import { filterVans } from "../../service/dataTransform";
+import { setResult } from "../../reducers/vansParamsSlice";
 import SeatsTrainDesc from "../../components/SeatsSelectComponent/SeatsTrainDesc";
 import SeatsTicketQty from "../../components/SeatsSelectComponent/SeatsTicketQty";
 import Error from "../../components/Error/Error";
 import IsLoading from "../../components/IsLoading/IsLoading";
 import VanType from "../../components/SeatsSelectComponent/VanType";
 import Vans from "../../components/SeatsSelectComponent/Vans";
+import { NavLink } from "react-router-dom";
 import "./seatsSelect.css";
 
 export default function SeatsSelect() {
@@ -58,6 +58,9 @@ export default function SeatsSelect() {
 
           </section>
         </div>
+        <NavLink to={'/passengers/'}>
+          <button className="next-button">Далее</button>
+        </NavLink>
       </section>
     );
   }

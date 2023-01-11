@@ -1,19 +1,17 @@
 import HeaderSelectOptions from "../../components/Header/HeaderSelectOptions";
-import FilterTrainSelect from "../../components/Filters/FilterTrainSelect";
-import OverLooked from "../../components/OverLooked/OverLooked";
 import Footer from "../../components/Footer/Footer";
 
-export default function Layout({children}) {
+export default function Layout({main, sidebar, sidebarBottom}) {
   
   return (
     <>
       <HeaderSelectOptions />
       <main className="main-container">
         <section className="sidebar-content">
-          <FilterTrainSelect />
-          <OverLooked />
+          {sidebar}
+          {sidebarBottom}
         </section>
-        {children}
+        {main}
       </main>
       <Footer />
     </>
