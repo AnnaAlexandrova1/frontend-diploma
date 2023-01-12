@@ -3,26 +3,16 @@ import { setPassInfo } from "../../reducers/seatsParamsSlice"
 
 export default function Passenger({ item, index }) {
    const dispatch = useDispatch()
-    const seatsCheck = useSelector(state => state.seatsParamsSlice.seats)
+  const seatsCheck = useSelector(state => state.seatsParamsSlice.seats)
+  
+  const timeDelay = (forStore) => {
+    setTimeout(() => dispatch(setPassInfo(forStore)), 1500)
+  }
     
     //let arr = seatsCheck
 
 
     console.log(seatsCheck)
-    
-    // const setPassInfo = (key, value) => {
-    //     return arr.map(elem => {
-    //         if (elem.num === item.num) {
-    //            return {
-    //                 ...elem,
-    //                 [key]: value
-    //             }
-    //         } else {
-    //             return elem
-    //         }
-    //     })
-    // }
-    // console.log(setPassInfo('sex', 'female'))
     
     return (
         <section className="passenger-data">
@@ -39,15 +29,15 @@ export default function Passenger({ item, index }) {
               <div className="passenger-name-selector-container">
                 <div className="last-name-container">
                   <h3 className="last-name_title">Фамилия</h3>
-                  <input type="text" />
+                  <input type="text" onKeyUp={(evt) => timeDelay({itemNum: item.num, key: 'last-name_title', value: evt.target.value})}/>
                 </div>
                 <div className="first-name-container">
                   <h3 className="first-name_title">Имя</h3>
-                  <input type="text" />
+                  <input type="text" onKeyUp={(evt) => timeDelay({itemNum: item.num, key: 'first-name_title', value: evt.target.value})}/>
                 </div>
                 <div className="middle-name-container">
                   <h3 className="middle-name_title">Отчество</h3>
-                  <input type="text" />
+                  <input type="text" onKeyUp={(evt) => timeDelay({itemNum: item.num, key: 'middle-name_title', value: evt.target.value})}/>
                 </div>
               </div>
               <div className="passenger-birthdayAndGender-selector-container">
@@ -59,15 +49,16 @@ export default function Passenger({ item, index }) {
                       id="switch_left"
                       name="switch_2"
                       value="male"
-                      checked
+                  //checked
+                      onClick={() => dispatch(setPassInfo({itemNum: item.num, key: 'gender', value: 'male'}))}
                     />
                     <label htmlFor="switch_left">М</label>
                     <input
                       type="radio"
                       id="switch_right"
                       name="switch_2"
-                            value="female"
-                            onClick={() => dispatch(setPassInfo({itemNum: 5, key: 'gender', value: 'Male'}))}
+                      value="female"
+                      onClick={() => dispatch(setPassInfo({ itemNum: item.num, key: 'gender', value: 'female' }))}
                     />
                     <label htmlFor="switch_right">Ж</label>
                   </div>
