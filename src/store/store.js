@@ -1,24 +1,55 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import storage from 'redux-persist/lib/storage';
+import { combineReducers } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER, } from 'redux-persist';
+import thunk from "redux-thunk";
+
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import { api } from "../api/api";
 import routesParamsSlice from "../reducers/routesParamsSlice";
 import seatsParamsSlice from "../reducers/seatsParamsSlice";
 import vansParamsSlice from "../reducers/vansParamsSlice";
 import trainsParamsSlice from "../reducers/trainsParamsSlise";
-import ticketParamsSlice from "../reducers/ticketParamsSlice";
+
+const reducers = combineReducers({
+  routesParamsSlice: routesParamsSlice,
+  seatsParamsSlice: seatsParamsSlice,
+  trainsParamsSlice: trainsParamsSlice,
+  vansParamsSlice: vansParamsSlice,
+  [api.reducerPath]: api.reducer
+});
+
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage: AsyncStorage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-  reducer: {
-    routesParamsSlice: routesParamsSlice,
-    seatsParamsSlice: seatsParamsSlice,
-    trainsParamsSlice: trainsParamsSlice,
-    vansParamsSlice: vansParamsSlice,
-    ticketParamsSlice: ticketParamsSlice,
-    [api.reducerPath]: api.reducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware({
+      // Redux persist
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(
+      api.middleware,
+    ),
 });
+
+export let persistor = persistStore(store)
+// export type RootState = ReturnType<typeof store.getState>
+// export type AppDispatch = typeof store.dispatch
 
 setupListeners(store.dispatch);
 

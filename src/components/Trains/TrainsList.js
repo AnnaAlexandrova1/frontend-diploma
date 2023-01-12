@@ -14,9 +14,10 @@ export default function TrainsList() {
   return (
     <section className="trains-list-container">
       <ul className="trains-list">
-        {printTrainsList.map((item, index) => {
-          return <TrainItem item={item} key={index} />
-        })}
+        {printTrainsList ?
+          printTrainsList.map((item, index) => {
+            return <TrainItem item={item} key={index} />
+          }) : null}      
         </ul>
     </section>
   );

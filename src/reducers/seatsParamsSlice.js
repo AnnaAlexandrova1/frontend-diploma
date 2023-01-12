@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { seatToggle } from "../service/dataTransform";
 
 const initialState = {
     req: {

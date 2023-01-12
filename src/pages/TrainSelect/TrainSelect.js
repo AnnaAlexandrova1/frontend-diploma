@@ -23,6 +23,7 @@ export default function TrainSelect() {
     console.log(trainsList)
     
     if (isError) {
+        console.log('error')
         return ( <Error />)
     }
     if (isFetching) {
