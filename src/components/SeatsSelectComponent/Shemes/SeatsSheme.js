@@ -11,7 +11,7 @@ export default function SeatsSheme({ item }) {
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
 
   const seatsCheck = useSelector(state => state.seatsParamsSlice.seats)
-  console.log(seatsCheck)
+  //console.log(seatsCheck)
 
   const setSeatNum = (elem) => {
 

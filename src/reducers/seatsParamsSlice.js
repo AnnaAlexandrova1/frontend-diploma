@@ -36,9 +36,23 @@ const seatsParamsSlice = createSlice({
         resetSelectSeats: (prevState, action) => ({
             ...prevState,
             seats: prevState.seats.filter(item => item.num !== action.payload)
+        }), 
+        setPassInfo: (prevState, action) => ({
+            ...prevState,
+            seats: prevState.seats.map(elem => {
+            if (elem.num === action.payload.itemNum) {
+               return {
+                    ...elem,
+                    [action.payload.key]: action.payload.value
+                }
+            } else {
+                return elem
+            }
         })
+        }), 
+
     }
 })
 
-export const { resetSeats, setSeatsParams, setSelectSeats, resetSelectSeats } = seatsParamsSlice.actions
+export const { resetSeats, setSeatsParams, setSelectSeats, resetSelectSeats, setPassInfo } = seatsParamsSlice.actions
 export default seatsParamsSlice.reducer;
