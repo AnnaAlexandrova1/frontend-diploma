@@ -5,6 +5,7 @@ import routesParamsSlice from "../reducers/routesParamsSlice";
 import seatsParamsSlice from "../reducers/seatsParamsSlice";
 import vansParamsSlice from "../reducers/vansParamsSlice";
 import trainsParamsSlice from "../reducers/trainsParamsSlise";
+import ticketParamsSlice from "../reducers/ticketParamsSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     seatsParamsSlice: seatsParamsSlice,
     trainsParamsSlice: trainsParamsSlice,
     vansParamsSlice: vansParamsSlice,
+    ticketParamsSlice: ticketParamsSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

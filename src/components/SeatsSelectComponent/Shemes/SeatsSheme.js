@@ -1,16 +1,42 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setSelectSeats, resetSelectSeats} from '../../../reducers/seatsParamsSlice'
 import First from "./First";
 import Cupe from "./Cupe"
 import Platzcart from "./Platzcart";
 import Seat from "./Seat";
+import { useEffect } from "react";
 
-export default function SeatsSheme({item}) {
+export default function SeatsSheme({ item }) {
+  const dispatch = useDispatch()
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
 
-  const styleAvailable = (el) => {
-    return el.available ? <li className="available-place" key={el._id}>{el.index}</li> : <li className="place_is_taken">{el.index}</li>
-  }
+  const seatsCheck = useSelector(state => state.seatsParamsSlice.seats)
+  console.log(seatsCheck)
 
+  const setSeatNum = (elem) => {
+
+    if (seatsCheck.map(item => item.num === elem ? 'contain' : elem).indexOf('contain') === -1) {
+      dispatch(setSelectSeats(elem))
+    } else {
+      dispatch(resetSelectSeats(elem))
+    }
+  }
+  
+    const stylePlace = (elem) => {
+    if (seatsCheck.map(item => item.num === elem ? 'contain' : elem).indexOf('contain') === -1) {
+      return "available-place"
+    } else {
+      return "available-place booked"
+    }
+  } 
+  
+  
+  const styleAvailable = (el) => {
+    return el.available ?
+      <li className={stylePlace(el.index)} key={el._id} onClick={() => setSeatNum(el.index)}>{el.index}</li> :
+      <li className="place_is_taken" key={el._id}>{el.index}</li>
+  }
+  
   switch (typeVan) {
     case 'first':
       return <First item={item} styleAvailable={styleAvailable} />

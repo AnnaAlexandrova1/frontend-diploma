@@ -663,6 +663,10 @@ display: flex;
   color: #FFA800;
 }
 
+.available-place.booked {
+  color: #FFA800;
+}
+
 .scheme_top-seats li {
   height: 29px;
   width: 26px;

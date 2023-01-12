@@ -18,9 +18,10 @@ export default function TrainSelect() {
   
   
     const args = makeArgs(list)
-    console.log(args)
+
     const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
-    console.log(result)
+    console.log(trainsList)
+    
     if (isError) {
         return ( <Error />)
     }

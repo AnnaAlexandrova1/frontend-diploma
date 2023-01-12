@@ -1,26 +1,32 @@
 const vanClasses = {
-  first: 'first',
-  second: 'second',
-  third: 'third',
-  fourth: 'fourth'
-}
+  first: "first",
+  second: "second",
+  third: "third",
+  fourth: "fourth",
+};
 
-function showTime(timestamp) {
-  var d = new Date(timestamp);
-  let timeStampCon = d.getHours() + ":" + d.getMinutes();
-
+function showDate(timestamp) {
+  let d = new Date(timestamp);
+  let timeStampCon =
+    d.getUTCDate() + "." + d.getUTCMonth() + 1 + "." + d.getUTCFullYear();
   return timeStampCon;
 }
 
-  const makeArgs = (list) => {
-        let args = ''
-        for (let key in list) {
-        if (list[key] !== '' && list[key]) {
-           args = args + `${key}=${list[key]}&` 
-        }
+function showTime(timestamp) {
+  let d = new Date(timestamp);
+  let timeStampCon = d.getHours() + ":" + d.getMinutes();
+  return timeStampCon;
+}
+
+const makeArgs = (list) => {
+  let args = "";
+  for (let key in list) {
+    if (list[key] !== "" && list[key]) {
+      args = args + `${key}=${list[key]}&`;
     }
-      return args.slice(0, -1)
-    }
+  }
+  return args.slice(0, -1);
+};
 
 function showDuration(time) {
   let hours = Math.floor(time / 60 / 60);
@@ -52,42 +58,41 @@ const showSeats = (arg) => {
 };
 
 const sortByTime = (arr) => {
-    
-    let arr2 = arr.slice().sort((a, b) => {
-      if(a.departure.from.datetime > b.departure.from.datetime){
-   return 1
+  let arr2 = arr.slice().sort((a, b) => {
+    if (a.departure.from.datetime > b.departure.from.datetime) {
+      return 1;
     }
-    if(a.departure.from.datetime < b.departure.from.datetime){
-   return -1
+    if (a.departure.from.datetime < b.departure.from.datetime) {
+      return -1;
     }
-    return 0
-    })
-    return arr2
-}
+    return 0;
+  });
+  return arr2;
+};
 const sortByPrice = (arr) => {
-    let arr2 = arr.slice().sort((a, b) => {
-      if(a.min_price > b.min_price){
-   return 1
+  let arr2 = arr.slice().sort((a, b) => {
+    if (a.min_price > b.min_price) {
+      return 1;
     }
-    if(a.min_price < b.min_price){
-   return -1
+    if (a.min_price < b.min_price) {
+      return -1;
     }
-    return 0
-    })
-    return arr2
-}
+    return 0;
+  });
+  return arr2;
+};
 const sortByDuration = (arr) => {
-    let arr2 = arr.slice().sort((a, b) => {
-      if(a.departure.duration > b.departure.duration){
-   return 1
+  let arr2 = arr.slice().sort((a, b) => {
+    if (a.departure.duration > b.departure.duration) {
+      return 1;
     }
-    if(a.departure.duration < b.departure.duration){
-   return -1
+    if (a.departure.duration < b.departure.duration) {
+      return -1;
     }
-    return 0
-    })
-    return arr2
-}
+    return 0;
+  });
+  return arr2;
+};
 
 const drowVansList = (filterVansList) => {
   if (filterVansList.length === 0 || !filterVansList.length) {
@@ -101,23 +106,30 @@ const drowVansList = (filterVansList) => {
 };
 
 const drowNumber = (index, typeVan) => {
-    const shemeNum = {
+  const shemeNum = {
     first: 1,
     second: 6,
     third: 11,
     fourth: 16,
   };
-    return shemeNum[typeVan] + index;
+  return shemeNum[typeVan] + index;
 };
-  
-const filterVans = (result, typeVan) => {
 
+const filterVans = (result, typeVan) => {
   let arr = result.filter((item) => item.coach.class_type === typeVan);
-  return arr.map((item ) => ({...item, checked: true}))
+  return arr.map((item) => ({ ...item, checked: true }));
 };
-    
+
+const seatToggle = (arr, elem) => {
+  if (arr.indexOf(elem) === -1) {
+    return arr.push({ num: elem});
+  } else {
+    return arr.filter((item) => item.num !== elem);
+  }
+};
 
 export {
+  showDate,
   showTime,
   showDuration,
   showDurationHours,
@@ -131,8 +143,6 @@ export {
   sortByPrice,
   sortByDuration,
   makeArgs,
+  seatToggle
 };
 export { vanClasses };
-
-
-

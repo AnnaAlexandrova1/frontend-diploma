@@ -89,6 +89,7 @@
   list-style: none;
   margin: 0;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .sidebar-train-number-title,
@@ -140,6 +141,10 @@
 .arrival-point-wrap {
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-departure-point-wrap, .arrival-point-wrap{
+  text-transform: capitalize ;
 }
 
 .sidebar-train-shipment-scheme_departure-date,

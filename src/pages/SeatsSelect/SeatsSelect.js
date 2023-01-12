@@ -30,7 +30,7 @@ export default function SeatsSelect() {
   if (isFetching) {
     return <IsLoading />;
   }
-  
+  console.log(args)
 
   if (result) {
     // console.log(`вагоны в поезде`)

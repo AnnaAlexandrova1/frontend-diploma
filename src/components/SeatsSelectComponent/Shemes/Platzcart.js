@@ -1,4 +1,5 @@
 export default function Platzcart({ item, styleAvailable }) {
+
   return (
     <div className="seats-scheme standart platzKarte-wagon">
       <span className="scheme_wagon-number">{`0${item.coach._id.slice(-1)}`}</span>

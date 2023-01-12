@@ -1,4 +1,7 @@
-export default function Seat({item, styleAvailable}) {
+import { useState } from "react";
+
+export default function Seat({ item, styleAvailable }) {
+
     return(<div className="seats-scheme seat-type">
     <span className="scheme_wagon-number">07</span>
     <ul className="scheme_first_lane-seats">
