@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { setParams } from "../../reducers/routesParamsSlice";
+import { resetVans } from "../../reducers/vansParamsSlice";
+import { resetRoutes } from "../../reducers/routesParamsSlice";
+import { resetSeats } from "../../reducers/seatsParamsSlice";
 import NavHeader from "./NavHeader";
 import Datalist from "./Datalist";
 import "./header.css";
@@ -48,6 +51,9 @@ export default function MainHeader() {
 
   const setParamsinStore = (evt) => {
     evt.preventDefault();
+    dispatch(resetVans());
+    dispatch(resetRoutes());
+    dispatch(resetSeats());
     const request = {
       from_city_id: from_city_id,
       to_city_id: to_city_id,

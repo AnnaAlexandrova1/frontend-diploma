@@ -33,7 +33,7 @@ const routesParamsSlice = createSlice({
   name: "routesParams",
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    resetRoutes: (state) => initialState,
     setParams: (state, action) => ({
         ...state,
       from_city_id: action.payload.from_city_id,
@@ -48,5 +48,5 @@ const routesParamsSlice = createSlice({
   },
 });
 
-export const { reset, setParams, setOneParam } = routesParamsSlice.actions;
+export const { resetRoutes, setParams, setOneParam } = routesParamsSlice.actions;
 export default routesParamsSlice.reducer;
