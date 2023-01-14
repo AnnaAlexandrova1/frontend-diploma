@@ -1,4 +1,8 @@
-export default function Passengers() {
+import { useSelector } from "react-redux"
+
+export default function PassengersAside() {
+  const seatsCheck = useSelector((state) => state.seatsParamsSlice.seats)
+  
     return (
         <div className="passengers-count-container">
               <div className="travel-details_title-container">
