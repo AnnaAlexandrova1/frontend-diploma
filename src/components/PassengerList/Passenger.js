@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPassInfo } from "../../reducers/seatsParamsSlice";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { data } from "jquery";
+import Select from "react-select";
 
 export default function Passenger({ item, index }) {
   const dispatch = useDispatch();
@@ -35,17 +35,29 @@ export default function Passenger({ item, index }) {
         setPassInfo({ itemNum: item.num, key: "Adult_Child", value: "Child" })
       );
     }
-    if (evt.target.value === "passRF") {
-      dispatch(
-        setPassInfo({ itemNum: item.num, key: "passport", value: "passRF" })
-      );
-    } 
-    if (evt.target.value === "passForeign") {
-      dispatch(
-        setPassInfo({ itemNum: item.num, key: "passport", value: "passForeign" })
-      );
-    }
+    // if (evt.target.value === "passRF") {
+    //   dispatch(
+    //     setPassInfo({ itemNum: item.num, key: "passport", value: "passRF" })
+    //   );
+    // } 
+    // if (evt.target.value === "passForeign") {
+    //   dispatch(
+    //     setPassInfo({ itemNum: item.num, key: "passport", value: "passForeign" })
+    //   );
+    // }
   };
+
+  const onHandlePass = (option) => {
+    if (option.value === 'none') {
+      return
+    } else {
+      dispatch(setPassInfo({ itemNum: item.num, key: "passport", value: option.value }))
+    }
+    console.log(passOptions.filter(elem => elem.value === showDataForVal('passport'))[0].label)
+  }
+  const showOpt = (passOptions) => {
+    return passOptions.filter(elem => elem.value === showDataForVal('passport'))[0].label
+  }
 
   const setStartDate = (date) => {
      let ddMmYear = date.getUTCDate() + "-" + date.getUTCMonth() + 1 + "-" + date.getUTCFullYear();
@@ -60,7 +72,42 @@ export default function Passenger({ item, index }) {
     getDataForVal(item)
   }
 
-  //let passData = getDataForVal(item)
+  const passOptions = [
+    { value: "none", label: "---", },
+    { value: "passRF", label: "Паспорт РФ"},
+    { value: "passForeign", label: " Загранпаспорт"}
+  ]
+
+  const colourStyles = {
+  option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      width: "280px",
+      height: '50px',
+      background: "#ffffff",
+      fontSize: "24px",
+      color: "#292929",
+    }),
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      width: "280px",
+      height: '50px',
+      background: "#ffffff",
+      border: "1px solid #928f94",
+      boxSizing: "border-box",
+      borderRadius: '5px',
+      fontSize: "24px",
+      color: "#292929",
+      marginRight: "25px",
+      paddingLeft: "15px"
+    }),
+    singleValue: (defaultStyles) => ({
+      ...defaultStyles,
+      color: "#292929",
+      fontSize: "24px",
+      marginRight: "25px",
+      paddingLeft: "15px"
+    }),
+}
 
   return (
     <section className="passenger-data">
@@ -184,17 +231,11 @@ export default function Passenger({ item, index }) {
         <div className="passenger-document-selector-container">
           <div className="document-type-container">
             <h3 className="document-type_title">Тип документа</h3>
-            <select className="passenger-document-type-selector" onChange={(evt) => onHandleToggle(evt)} value={{ label: showDataForVal('passport') }}>
-              <option className="document-type-option" value="passRF">
-                ---
-              </option>
-              <option className="document-type-option" value="passRF">
-                Паспорт РФ
-              </option>
-              <option className="document-type-option" value="passForeign">
-                Загранпаспорт
-              </option>
-            </select>
+            <Select
+                  styles={colourStyles}
+                  options={passOptions}
+                  onChange={onHandlePass}
+                  defaultValue={passOptions.filter(option => option.value === 'PassRF')} />
           </div>
           <div className="document-serial-container">
             <h3 className="document-type_title">Серия</h3>
