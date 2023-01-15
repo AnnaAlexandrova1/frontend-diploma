@@ -26,7 +26,7 @@ export default function PassengersAside() {
       <div className="count-list-wrap">
         <div className="passengers-count-total">
           <p>{seatsCount("adult")} Взрослых</p>
-          <p>{seatsCount("child")} Ребенок</p>
+          <p>{seatsCount("kids")} Ребенок</p>
         </div>
         <div className="passengers-price-total">
           <p>
@@ -34,7 +34,7 @@ export default function PassengersAside() {
             <span className="rub-vector-small"></span>
           </p>
           <p>
-            {priceCount("child")}
+            {priceCount("kids")}
             <span className="rub-vector-small"></span>
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function PassengersAside() {
       <div className="total">
         <p>Итог</p>
         <span className="total-price">
-          {priceCount("adult") + priceCount("child")}
+          {priceCount("adult") + priceCount("kids")}
           <span className="rub-vector"></span>
         </span>
       </div>

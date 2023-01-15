@@ -38,13 +38,13 @@ export default function SeatsSheme({ item }) {
   
   switch (typeVan) {
     case 'first':
-      return <First item={item} styleAvailable={styleAvailable} />
+      return <First item={item} styleAvailable={styleAvailable} key={"first"} />
     case 'second':
-      return <Cupe item={item} styleAvailable={styleAvailable}/>
+      return <Cupe item={item} styleAvailable={styleAvailable} key={"second"}/>
     case 'third':
-      return <Platzcart item={item} styleAvailable={styleAvailable}/>
+      return <Platzcart item={item} styleAvailable={styleAvailable} key={"third"}/>
     case 'fourth':
-      return <Seat item={item} styleAvailable={styleAvailable}/>
+      return <Seat item={item} styleAvailable={styleAvailable} key={"fourth"}/>
     default: 
       return (<div> Ошибка! Что-то пошло не так. </div>)
   }

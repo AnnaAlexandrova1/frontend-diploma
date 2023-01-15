@@ -25,7 +25,7 @@ export default function Passenger({ item, index }) {
   };
 
   const timeDelay = (forStore) => {
-    setTimeout(() => dispatch(setPassInfo(forStore)), 100);
+    setTimeout(() => dispatch(setPassInfo(forStore)), 10);
   };
 
   const onHandleToggle = (evt) => {
@@ -257,6 +257,7 @@ export default function Passenger({ item, index }) {
           <input
             className="low-mobility-checkbox"
             type="checkbox"
+            value=''
             onClick={(evt) => lowMobCheck(evt)}
           />
           <p>Ограниченная подвижность</p>

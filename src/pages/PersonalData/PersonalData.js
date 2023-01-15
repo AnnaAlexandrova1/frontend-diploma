@@ -1,0 +1,44 @@
+import { useSelector } from "react-redux";
+import NameContainer from "../../components/PayData/NameContainer";
+import PayWay from "../../components/PayData/PayWay";
+
+import "./personalData.css";
+
+export default function PersonalData() {
+  const personalData = useSelector(
+    (state) => state.seatsParamsSlice.personalData
+  );
+
+    const checkData = () => {
+    if (
+      personalData.firstName.length > 1 &&
+      personalData.surname.length > 1 &&
+      personalData.middleName.length > 1 &&
+      personalData.phone.length > 1 &&
+      personalData.email.length > 1 &&
+      personalData.payWay.payMethod.length > 1
+    ) {
+      return "";
+    } else {
+      return "disabled";
+    }
+  };
+
+  return (
+    <section className="pay-data_main-container">
+      <section className="pay-data">
+        <div className="pay-data-personal_header">
+          <h2 className="pay-data-title">Персональные данные</h2>
+        </div>
+        <NameContainer />
+        <div className="pay-data-payType_header">
+          <h2 className="pay-data-title">Способ оплаты</h2>
+        </div>
+        <PayWay />
+      </section>
+      <button className="pay-button" disabled={checkData()}>
+        Купить билеты
+      </button>
+    </section>
+  );
+}
