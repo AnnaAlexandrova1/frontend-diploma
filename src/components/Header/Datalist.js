@@ -2,6 +2,7 @@ import { useGetCitiesQuery } from "../../api/api"
 import Error from "../Error/Error"
 import IsLoading from "../IsLoading/IsLoading"
 
+
 export default function Datalist({ arg, onClick }) {
     const { currentData: result, isError, isFetching } = useGetCitiesQuery(arg)
     if (isFetching && !result) return <IsLoading />

@@ -11,7 +11,7 @@ export default function PassengersAside() {
   const priceCount = (name) => {
     let res = seatsCheck
       .filter((elem) => elem.category === name)
-      .reduce((sum, current) => (sum + current.price ? current.price : 0), 0);
+      .reduce((sum, current) => (sum + current.price), 0);
     return res;
   };
 

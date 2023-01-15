@@ -38,8 +38,15 @@ export default function Passengers() {
 
   const onHandlCheck = (evt) => {
     evt.preventDefault();
-    let arr = seatsCheck.map((item) => checkPassInfo(item));
-    if (arr.filter((elem) => elem === false) === -1) {
+    let arr = seatsCheck.map((item) => {
+      if (checkPassInfo(item)) {
+        return 'true'
+      } else {
+        return 'false'
+      }
+    });
+    arr = arr.filter((elem) => elem === 'false')
+    if (arr === -1 || arr.length < 1) {
       navigate("/payment");
     } else {
       alert("Не заполнены даныне на всех пассажиров");

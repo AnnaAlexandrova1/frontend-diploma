@@ -16,7 +16,6 @@ export default function TrainSelect() {
     const list = useSelector(state => state.routesParamsSlice)
     const trainsList = useSelector(state => state.trainsParamsSlice.trainsList)
   
-  
     const args = makeArgs(list)
 
     const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)

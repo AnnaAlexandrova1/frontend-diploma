@@ -1,5 +1,7 @@
-import VansNumbers from "./VansNumbers";
+import { nanoid } from 'nanoid'
 import { useSelector } from "react-redux";
+
+import VansNumbers from "./VansNumbers";
 import SeatsSheme from "./Shemes/SeatsSheme";
 import VanItem from "./VanItem";
 
@@ -28,7 +30,7 @@ export default function Vans() {
           <div className="seats-disclamer">
             <p>11 человек выбирают места в этом поезде</p>
           </div>
-            <SeatsSheme item={item} key={index} />
+            <SeatsSheme item={item} key={item.coach._id + index} />
         </>
         } else {
           return null

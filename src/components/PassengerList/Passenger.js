@@ -163,7 +163,7 @@ export default function Passenger({ item, index }) {
             <h3 className="last-name_title">Фамилия</h3>
             <input
               type="text"
-              value={showDataForVal("last-name_title")}
+              value={showDataForVal("last-name_title") || ''}
               onChange={(evt) =>
                 timeDelay({
                   itemNum: item.num,
@@ -177,7 +177,7 @@ export default function Passenger({ item, index }) {
             <h3 className="first-name_title">Имя</h3>
             <input
               type="text"
-              value={showDataForVal("first-name_title")}
+              value={showDataForVal("first-name_title")|| ''}
               onChange={(evt) =>
                 timeDelay({
                   itemNum: item.num,
@@ -191,7 +191,7 @@ export default function Passenger({ item, index }) {
             <h3 className="middle-name_title">Отчество</h3>
             <input
               type="text"
-              value={showDataForVal("middle-name_title")}
+              value={showDataForVal("middle-name_title") || ''}
               onChange={(evt) =>
                 timeDelay({
                   itemNum: item.num,
@@ -249,7 +249,7 @@ export default function Passenger({ item, index }) {
               dateFormat="dd/MM/yyyy"
               onChange={(date) => setStartDate(date)}
               maxDate={new Date()}
-              value={showDataForVal("date")}
+              value={showDataForVal("date") || ''}
             />
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function Passenger({ item, index }) {
             <input
               type="text"
               pattern="[0-9]{4}"
-              value={showDataForVal("passSeria")}
+              value={showDataForVal("passSeria") || ''}
               onChange={(evt) =>
                 timeDelay({
                   itemNum: item.num,
