@@ -9,6 +9,8 @@ import FilterTrainSelect from '../Filters/FilterTrainSelect';
 import OverLooked from '../OverLooked/OverLooked';
 import TicketInfo from '../TicketInfo/TicketInfo';
 import PersonalData from '../../pages/PersonalData/PersonalData';
+import Confirmation from '../../pages/Confirmation/Confirmation';
+import Successfulorder from '../../pages/Successfulorder/Successfulorder';
 import './App.css';
 
 
@@ -20,7 +22,9 @@ function App() {
         <Route path="trainselect" element={<Layout main={<TrainSelect />} sidebar={<FilterTrainSelect />} sidebarBottom={ <OverLooked />} />}></Route>
         <Route path="seatsselect" element={<Layout main={<SeatsSelect />} sidebar={<FilterTrainSelect />} sidebarBottom={ <OverLooked />}/>}></Route>
         <Route path="passengers" element={<Layout main={<Passengers />} sidebar={<TicketInfo />} sidebarBottom={null} />}></Route>
-        <Route path="personaldata" element={<Layout main={<PersonalData />} sidebar={<TicketInfo />} sidebarBottom={null}/>}></Route>
+        <Route path="personaldata" element={<Layout main={<PersonalData />} sidebar={<TicketInfo />} sidebarBottom={null} />}></Route>
+        <Route path="confirmation" element={<Layout main={<Confirmation />} sidebar={<TicketInfo />} sidebarBottom={null} />}></Route>
+        <Route path="successfulorder" element={<Successfulorder />}></Route>
       </Routes>
     </div>
   );

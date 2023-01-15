@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import NameContainer from "../../components/PayData/NameContainer";
 import PayWay from "../../components/PayData/PayWay";
 
@@ -36,9 +37,10 @@ export default function PersonalData() {
         </div>
         <PayWay />
       </section>
-      <button className="pay-button" disabled={checkData()}>
+          <NavLink to="/confirmation/">
+          <button className="pay-button" disabled={checkData()}>
         Купить билеты
-      </button>
+      </button></NavLink>
     </section>
   );
 }
