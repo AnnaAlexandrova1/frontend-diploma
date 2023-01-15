@@ -5,7 +5,8 @@ const initialState = {
       id: '',
     },
     data: {},
-    seats: []
+    seats: [],
+    category: 'adult'
 }
 
 const seatsParamsSlice = createSlice({
@@ -30,7 +31,7 @@ const seatsParamsSlice = createSlice({
         }),
         setSelectSeats: (prevState, action) => ({
             ...prevState,
-            seats: [...prevState.seats, {num: action.payload}]
+            seats: [...prevState.seats, {num: action.payload.num, category: prevState.category, price: action.payload.price}]
         }),
         resetSelectSeats: (prevState, action) => ({
             ...prevState,
@@ -52,10 +53,14 @@ const seatsParamsSlice = createSlice({
         deletePassInfo: (prevState, action) => ({
             ...prevState,
             seats: prevState.seats.filter(elem => elem.num !== action.payload)
-        }), 
+        }),
+        setCategory: (prevState, action) => ({
+            ...prevState,
+            category: action.payload
+        }),
 
     }
 })
 
-export const { resetSeats, setSeatsParams, setSelectSeats, resetSelectSeats, setPassInfo, deletePassInfo } = seatsParamsSlice.actions
+export const { resetSeats, setSeatsParams, setSelectSeats, resetSelectSeats, setPassInfo, deletePassInfo, setCategory } = seatsParamsSlice.actions
 export default seatsParamsSlice.reducer;

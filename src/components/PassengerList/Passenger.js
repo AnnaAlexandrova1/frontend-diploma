@@ -31,12 +31,12 @@ export default function Passenger({ item, index }) {
   const onHandleToggle = (evt) => {
     if (evt.target.value === "Adult") {
       dispatch(
-        setPassInfo({ itemNum: item.num, key: "Adult_Child", value: "Adult" })
+        setPassInfo({ itemNum: item.num, key: "category", value: "adult" })
       );
     }
     if (evt.target.value === "Child") {
       dispatch(
-        setPassInfo({ itemNum: item.num, key: "Adult_Child", value: "Child" })
+        setPassInfo({ itemNum: item.num, key: "Adult_Child", value: "child" })
       );
     }
   };

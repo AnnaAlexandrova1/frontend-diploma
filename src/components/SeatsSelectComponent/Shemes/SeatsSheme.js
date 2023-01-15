@@ -14,9 +14,8 @@ export default function SeatsSheme({ item }) {
   //console.log(seatsCheck)
 
   const setSeatNum = (elem) => {
-
     if (seatsCheck.map(item => item.num === elem ? 'contain' : elem).indexOf('contain') === -1) {
-      dispatch(setSelectSeats(elem))
+      dispatch(setSelectSeats({ num: elem, price: item.coach.bottom_price }))
     } else {
       dispatch(resetSelectSeats(elem))
     }

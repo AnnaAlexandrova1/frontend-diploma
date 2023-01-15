@@ -1,31 +1,51 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
 export default function PassengersAside() {
-  const seatsCheck = useSelector((state) => state.seatsParamsSlice.seats)
-  
-    return (
-        <div className="passengers-count-container">
-              <div className="travel-details_title-container">
-                <h2 className="travel-details-main_title">
-                  <span className="passenger-vector"></span>Пассажиры
-                    </h2>
-                    <span className="closeUP-vector"></span>
-                  </div>
-                  <div className="count-list-wrap">
-                    <div className="passengers-count-total">
-                      <p>2 Взрослых</p>
-                      <p>1 Ребенок</p>
-                    </div>
-                    <div className="passengers-price-total">
-                      <p>5840<span className="rub-vector-small"></span></p>
-                      <p>1920<span className="rub-vector-small"></span></p>
-                    </div>
-                  </div>
-                  <div className="total">
-                    <p>Итог</p>
-                    <span className="total-price">7760<span className="rub-vector"></span
-                ></span>
-                  </div>
-                </div>
-    )
+  const seatsCheck = useSelector((state) => state.seatsParamsSlice.seats);
+
+  const seatsCount = (name) => {
+    let arr = seatsCheck.filter((elem) => elem.category === name);
+    return arr === -1 ? 0 : arr.length;
+  };
+
+  const priceCount = (name) => {
+    let res = seatsCheck
+      .filter((elem) => elem.category === name)
+      .reduce((sum, current) => (sum + current.price ? current.price : 0), 0);
+    return res;
+  };
+
+  return (
+    <div className="passengers-count-container">
+      <div className="travel-details_title-container">
+        <h2 className="travel-details-main_title">
+          <span className="passenger-vector"></span>Пассажиры
+        </h2>
+        <span className="closeUP-vector"></span>
+      </div>
+      <div className="count-list-wrap">
+        <div className="passengers-count-total">
+          <p>{seatsCount("adult")} Взрослых</p>
+          <p>{seatsCount("child")} Ребенок</p>
+        </div>
+        <div className="passengers-price-total">
+          <p>
+            {priceCount("adult")}
+            <span className="rub-vector-small"></span>
+          </p>
+          <p>
+            {priceCount("child")}
+            <span className="rub-vector-small"></span>
+          </p>
+        </div>
+      </div>
+      <div className="total">
+        <p>Итог</p>
+        <span className="total-price">
+          {priceCount("adult") + priceCount("child")}
+          <span className="rub-vector"></span>
+        </span>
+      </div>
+    </div>
+  );
 }
