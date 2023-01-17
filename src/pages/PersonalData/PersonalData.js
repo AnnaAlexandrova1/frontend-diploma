@@ -37,7 +37,7 @@ export default function PersonalData() {
         </div>
         <PayWay />
       </section>
-          <NavLink to="/confirmation/">
+          <NavLink to="/confirmation/" style={{textDecoration: 'none'}}>
           <button className="pay-button" disabled={checkData()}>
         Купить билеты
       </button></NavLink>

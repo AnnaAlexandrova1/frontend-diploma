@@ -12,7 +12,7 @@ export default function BreadCrums() {
   }
 
   const styleThirdCrum = () => {
-    if (path.indexOf('passengers') !== -1 || path.indexOf('personaldata') !== -1 || path.indexOf('payment') !== -1) {
+    if (path.indexOf('passengers') !== -1 || path.indexOf('personaldata') !== -1 || path.indexOf('payment') !== -1 || path.indexOf('confirmation') !== -1) {
       return "breadcrumb breadcrumb-active"
     } else {
       return "breadcrumb"

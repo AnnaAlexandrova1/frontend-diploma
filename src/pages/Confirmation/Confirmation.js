@@ -6,6 +6,7 @@ import {
   showSeats,
   showPrice,
 } from "../../service/dataTransform";
+import { useAddNewOrderMutation } from "../../api/api";
 import PassItem from "../../components/Confirmation/PassItem";
 import "./confirmation.css";
 
@@ -13,6 +14,7 @@ export default function Confirmation() {
   const data = useSelector((state) => state.seatsParamsSlice.data).item;
   const seats = useSelector((state) => state.seatsParamsSlice.seats);
   console.log(seats);
+
 
   const priceCount = (name) => {
     let res = seats
@@ -25,7 +27,7 @@ export default function Confirmation() {
     <section className="confim-order_main-container">
       <div className="train-wrap">
         <h1>Поезд</h1>
-        <li className="train-in-conf">
+        <li className="train in-conf">
           <div className="train-description-wrap">
             <div className="train-description">
               <span className="train-vector"></span>
@@ -168,9 +170,10 @@ export default function Confirmation() {
               </span>
               <span className="rub-vector"></span>
             </div>
+            <div className="confim-order-total">
             <NavLink to={"/passengers"}>
               <button className="config-ticket">Изменить</button>
-            </NavLink>
+            </NavLink></div>
           </div>
         </div>
       </div>
@@ -185,7 +188,7 @@ export default function Confirmation() {
         </div>
       </div>
 
-      <NavLink to="/successfulorder">
+      <NavLink to="/successfulorder" style={{textDecoration: 'none'}}>
       <button className="confirm-button">
         Подтвердить
       </button></NavLink>

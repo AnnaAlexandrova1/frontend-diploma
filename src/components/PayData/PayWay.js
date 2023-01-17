@@ -86,7 +86,7 @@ export default function PayWay() {
           type="checkbox"
           value={"cash"}
           onClick={(evt) => setPayMethod(evt)}
-          defaultChecked={handleChecked("cash")}
+          //defaultChecked={handleChecked("cash")}
           disabled={handleCashDisabled()}
         />
         <label htmlFor="box-2">Наличными</label>

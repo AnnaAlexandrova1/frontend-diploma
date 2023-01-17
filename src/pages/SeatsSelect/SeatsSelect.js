@@ -58,7 +58,7 @@ export default function SeatsSelect() {
 
           </section>
         </div>
-        <NavLink to={'/passengers/'}>
+        <NavLink to={'/passengers/'} style={{textDecoration: "none"}}>
           <button className="next-button">Далее</button>
         </NavLink>
       </section>

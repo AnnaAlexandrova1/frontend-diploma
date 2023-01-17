@@ -31,25 +31,34 @@ export const api = createApi({
       },
       providesTags: (result, error, args) => [{ type: "Seats", id: args }],
     }),
-    // updateUser: builder.mutation({
-    //   query: ({id, ...body}) => ({
-    //     url: `users/${id}`,
-    //     method: 'POST',
-    //     body,
-    //   }),
-    //   // invalidatesTags: (result, error, {id}) => [{type: "Users", id}],
-    //   async onQueryStarted({id, ...body}, {dispatch, queryFulfilled}) {
-    //     console.log(id)
-    //     const patchResult = dispatch(
-    //         api.util.updateQueryData('getUser', +id, (draft) => Object.assign(draft, body)))
-    //     try {
-    //       await queryFulfilled
-    //     } catch {
-    //       patchResult.undo()
-    //     }
-    //   },
-    // }),
+    addNewOrder: builder.mutation({
+       query: (payload) => ({
+        url: '/posts',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }),
+      invalidatesTags: ['Order'],
+      }),
   }),
 });
 
-export const { useGetRoutesQuery, useGetCitiesQuery, useGetLastRoutesQuery, useGetSeatsQuery } = api;
+
+// подписка на рассылку новостей в футере
+
+const postEmail = (email) => {
+  let formData = new FormData();
+    formData.append('email', email)
+    fetch("https://netology-trainbooking.netoservices.ru/subscribe?",
+    {
+      body: formData,
+      method: "post",
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then( response => response.json())
+      .then(data => { data.status ? alert('Вы подписаны на рассылку') : alert('Ошибка. Что-то пошло не так')  })
+}
+
+export const { useGetRoutesQuery, useGetCitiesQuery, useGetLastRoutesQuery, useGetSeatsQuery, useAddNewOrderMutation } = api;
+export { postEmail }

@@ -13,6 +13,11 @@ p,
   color: #292929;
   margin: 0;
 }
+
+.confim-order-total span{
+  font-size: 30px;
+}
+
 .passenger-data-wrap,
 .train-wrap,
 .pay-type-wrap {
@@ -27,7 +32,7 @@ p,
   margin: 100px 0 100px 84px;
 }
 
-.train-in-conf {
+.train.in-conf {
   border: none;
   margin-bottom: 0;
 }
@@ -117,6 +122,7 @@ p,
 }
 
 .confim-order-total-price-sum {
+  font-size: 30px;
   font-weight: bold;
   padding: 0 5px 0 35px;
 }
@@ -152,6 +158,8 @@ p,
 .config-pay-type {
   margin: 85px 40px 3px 40px;
 }
+
+
 
 .config-ticket:hover,
 .config-pay-type:hover,

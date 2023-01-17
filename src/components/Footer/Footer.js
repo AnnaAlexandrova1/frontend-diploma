@@ -1,3 +1,6 @@
+
+import { postEmail } from "../../api/api";
+import { createRef, useState } from "react";
 import "./Footer.css";
 
 import footerCell from '../../img/icons/footerCell.svg';
@@ -12,6 +15,15 @@ import footerGoogle from '../../img/icons/footer-google.svg';
 import footerEllipse from '../../img/icons/footer-ellipse.svg';
 
 export default function Footer() {
+
+  const ref = createRef()
+
+  const onPost = (evt) => {
+    evt.preventDefault()
+    postEmail(evt.target.value)
+  }
+
+
   return (
     <footer className="footer">
       <div className="footer-main">
@@ -79,8 +91,9 @@ export default function Footer() {
                   type="email"
                   className="footer-main__subscribe__form-input"
                   placeholder="e-mail"
+                  ref={ref}
                 />
-                <button className="footer-main__subscribe__send btn-footer">
+                <button className="footer-main__subscribe__send btn-footer" onClick={(evt) => onPost(evt)}>
                   ОТПРАВИТЬ
                 </button>
               </div>

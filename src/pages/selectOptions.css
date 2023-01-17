@@ -80,6 +80,9 @@
   color: #ffffff;
   padding: 18px 0 18px 0;
 }
+.options-list li p {
+  color: #ffffff;
+}
 
 .options-list p {
   margin: 0;
@@ -102,6 +105,9 @@
   width: 14px;
   height: 23px;
   background: url(../img/icons/css_sprites.png) -785px -160px;
+}
+.seat-vector p {
+  color:#e4e0e9
 }
 
 .luxury-vector {

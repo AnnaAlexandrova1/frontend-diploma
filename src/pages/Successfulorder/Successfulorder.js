@@ -10,15 +10,17 @@ export default function Successfulorder() {
   const personalData = useSelector(
     (state) => state.seatsParamsSlice.personalData
   );
+  console.log(personalData)
   const seats = useSelector((state) => state.seatsParamsSlice.seats);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const backMainPage = () => {
+    navigate("/");
     dispatch(resetVans());
     dispatch(resetRoutes());
     dispatch(resetSeats());
-    navigate("/");
+
   };
 
   const priceCount = (name) => {
@@ -168,7 +170,7 @@ export default function Successfulorder() {
                   </li>
                 </ul>
               </div>
-              <button className="back-to-main" onClick={backMainPage()}>
+              <button className="back-to-main" onClick={() => backMainPage()}>
                 Вернуться на главную
               </button>
             </div>
