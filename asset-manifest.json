@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-diploma/static/css/main.723fd8e0.css",
-    "main.js": "/frontend-diploma/static/js/main.98382351.js",
+    "main.js": "/frontend-diploma/static/js/main.c13b8c5e.js",
     "static/media/orderEnd.png": "/frontend-diploma/static/media/orderEnd.22e45cd63d240138ec35.png",
     "static/media/how-its-work-img.png": "/frontend-diploma/static/media/how-its-work-img.34a6bf67f0dd842ef3b3.png",
     "static/media/train.png": "/frontend-diploma/static/media/train.f4d1d371eda14a0a99b8.png",
@@ -31,10 +31,10 @@
     "static/media/footer-ellipse.svg": "/frontend-diploma/static/media/footer-ellipse.767a692508e291e6b8135c7959fcc5c4.svg",
     "static/media/firstClass.svg": "/frontend-diploma/static/media/firstClass.2f216c4a3de2b946bc67ea048c2fc6d6.svg",
     "main.723fd8e0.css.map": "/frontend-diploma/static/css/main.723fd8e0.css.map",
-    "main.98382351.js.map": "/frontend-diploma/static/js/main.98382351.js.map"
+    "main.c13b8c5e.js.map": "/frontend-diploma/static/js/main.c13b8c5e.js.map"
   },
   "entrypoints": [
     "static/css/main.723fd8e0.css",
-    "static/js/main.98382351.js"
+    "static/js/main.c13b8c5e.js"
   ]
 }
