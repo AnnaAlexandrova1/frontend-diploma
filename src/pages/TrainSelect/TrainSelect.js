@@ -19,10 +19,8 @@ export default function TrainSelect() {
     const args = makeArgs(list)
 
     const { currentData: result, isError, isFetching } = useGetRoutesQuery(args)
-    console.log(trainsList)
     
     if (isError) {
-        console.log('error')
         return ( <Error />)
     }
     if (isFetching) {
@@ -30,8 +28,6 @@ export default function TrainSelect() {
     }
     if (result) {
         dispatch(setTrainsResult(result))
-        console.log(`поезда`)
-        console.log(trainsList)
         
          return (
         <section className="trains">

@@ -32,12 +32,14 @@ export const api = createApi({
       providesTags: (result, error, args) => [{ type: "Seats", id: args }],
     }),
     addNewOrder: builder.mutation({
-       query: (payload) => ({
-        url: '/posts',
+      query: (payload) => ({
+        
+        url: 'order',
         method: 'POST',
-        body: payload,
+        body: JSON.stringify(payload),
         headers: {
-          'Content-type': 'application/json; charset=UTF-8',
+          'Accept': 'application/json',
+         'Content-Type': 'application/json'
         }
       }),
       invalidatesTags: ['Order'],

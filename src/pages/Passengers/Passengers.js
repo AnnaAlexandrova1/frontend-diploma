@@ -53,7 +53,6 @@ export default function Passengers() {
     }
   };
 
-  console.log(seatsCheck);
   const drowList = (seatsCheck) => {
     if (seatsCheck.length > 0) {
       return seatsCheck.map((item, index) => {

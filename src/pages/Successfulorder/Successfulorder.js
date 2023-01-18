@@ -10,7 +10,6 @@ export default function Successfulorder() {
   const personalData = useSelector(
     (state) => state.seatsParamsSlice.personalData
   );
-  console.log(personalData)
   const seats = useSelector((state) => state.seatsParamsSlice.seats);
   const dispatch = useDispatch();
   const navigate = useNavigate();

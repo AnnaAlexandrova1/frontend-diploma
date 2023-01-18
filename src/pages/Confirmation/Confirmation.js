@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import {
   showTime,
   showDuration,
@@ -11,9 +11,65 @@ import PassItem from "../../components/Confirmation/PassItem";
 import "./confirmation.css";
 
 export default function Confirmation() {
+  const [addNewOrder, response] = useAddNewOrderMutation()
+  const navigate = useNavigate();
+
   const data = useSelector((state) => state.seatsParamsSlice.data).item;
   const seats = useSelector((state) => state.seatsParamsSlice.seats);
-  console.log(seats);
+  const personalData = useSelector((state) => state.seatsParamsSlice.personalData)
+
+  //можно было сделать state сразу похожий на API ответа, но я не сразу прочитала следующий пункт задачи
+  const createSendInfo = () => {
+    const body = {
+      user: {
+          first_name : personalData.firstName,
+          last_name: personalData.surname,
+          patronymic: personalData.middleName,
+          phone: personalData.phone,
+          email: personalData.email,
+          payment_method: personalData.payWay.payMethod
+      },
+      departure: {
+       route_direction_id: data.departure._id,
+        seats: [seats.map((item, index) => {
+          return {
+              coach_id: data.departure.train._id,
+            person_info: {
+                is_adult: item.category === 'adult' ? true : false,
+                first_name: item['first-name_title'],
+                last_name: item['last-name_title'],
+                patronymic: item['middle-name_title'],
+                gender: true,
+                birthday: item.date,
+                document_type: "паспорт",
+                document_data: `${item.passSeria} ${item.passNum}`
+              },
+              seat_number: item.num,
+              is_child: item.category === 'child' ? true : false,
+              include_children_seat: item.category === 'child' ? true : false,
+            }
+          })
+          ]
+      }
+
+    }
+    return body
+  }
+
+
+  const onSubmitOrder = (evt) => {
+    evt.preventDefault()
+    const dataInfo = createSendInfo()
+    addNewOrder(dataInfo).unwrap().then(response => {
+      if (response.status) {
+        navigate("/successfulorder")
+      } else {
+        alert('Повторите отправку формы позже')
+      }
+    })
+   }
+
+
 
 
   const priceCount = (name) => {
@@ -158,7 +214,7 @@ export default function Confirmation() {
           <div className="data-wrap-container">
             <ul>
               {seats.map((item) => (
-                <PassItem item={item} key={item.num} />
+                <PassItem item={item} key={item.num}/>
               ))}
             </ul>
           </div>
@@ -188,10 +244,11 @@ export default function Confirmation() {
         </div>
       </div>
 
-      <NavLink to="/successfulorder" style={{textDecoration: 'none'}}>
-      <button className="confirm-button">
+      {/* <NavLink to="/successfulorder" style={{textDecoration: 'none'}}> */}
+      <button className="confirm-button" onClick={(evt) => onSubmitOrder(evt)}>
         Подтвердить
-      </button></NavLink>
+      </button>
+    {/* </NavLink> */}
     </section>
   );
 }
