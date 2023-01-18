@@ -12,13 +12,9 @@ import "./seatsSelect.css";
 
 export default function SeatsSelect() {
   const dispatch = useDispatch()
-
   const typeVan = useSelector(state => state.vansParamsSlice.typeVan)
- // const filterVansList = useSelector(state => state.vansParamsSlice.filterVansList)
-
   const args = useSelector((state) => state.seatsParamsSlice);
-  // console.log('args.req')
-  // console.log(args.req)
+
   const {
     currentData: result,
     isError,
@@ -32,13 +28,11 @@ export default function SeatsSelect() {
   }
 
   if (result) {
-    // console.log(`вагоны в поезде`)
-    // console.log(result)
+  
     dispatch(setResult(result))
    
     //const filterVansList = filterVans();
 
-  
     return (
       <section className="seats-content">
         <h1 className="seats-title">Выбор мест</h1>

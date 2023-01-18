@@ -32,8 +32,8 @@ export default function SeatsSheme({ item }) {
   
   const styleAvailable = (el) => {
     return el.available ?
-      <li className={stylePlace(el.index)} key={el._id} onClick={() => setSeatNum(el.index)}>{el.index}</li> :
-      <li className="place_is_taken" key={el._id}>{el.index}</li>
+      <li className={stylePlace(el.index)} key={el.index} onClick={() => setSeatNum(el.index)}>{el.index}</li> :
+      <li className="place_is_taken" key={el.index}>{el.index}</li>
   }
   
   switch (typeVan) {

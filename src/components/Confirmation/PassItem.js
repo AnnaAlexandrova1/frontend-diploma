@@ -35,7 +35,7 @@ export default function PassItem({ item }) {
         <p>Пол: {drowGender()}</p>
         <p>Дата Рождения: {item.date}</p>
         <p>
-          {drowPass} {item.passSeria} {item.passNum}
+          {drowPass()} {item.passSeria} {item.passNum}
         </p>
       </div>
     </li>

@@ -1,3 +1,4 @@
+import React from "react";
 import Draggable from "react-draggable";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,6 +6,7 @@ import { setOneParam } from "../../reducers/routesParamsSlice";
 
 export default function PriceFilter() {
   const dispatch = useDispatch();
+  const nodeRef = React.useRef(null);
 
   const price_from = useSelector((state) => state.routesParamsSlice.price_from);
   const price_to = useSelector((state) => state.routesParamsSlice.price_to);
@@ -39,20 +41,22 @@ export default function PriceFilter() {
       <span className="max-cost-title">До</span>
       <div className="circle-container">
         <Draggable
+          nodeRef={nodeRef}
           axis="x"
           bounds={{ left: 0, right: 246 }}
           onDrag={handlePrice_from}
         >
-          <div className="circle-1"></div>
+          <div className="circle-1" ref={nodeRef}></div>
         </Draggable>
         <div className="line-gray"></div>
         {/* <div className="line-colored" style={{left: "12px", right: "135px"}}></div> */}
         <Draggable
+          nodeRef={nodeRef}
           axis="x"
           bounds={{ left: -246, right: 0 }}
           onDrag={handlePrice_to}
         >
-          <div className="circle-2"></div>
+          <div ref={nodeRef} className="circle-2"></div>
         </Draggable>
       </div>
       <div className="cost-container">

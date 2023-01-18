@@ -1,3 +1,4 @@
+import React from "react";
 import Draggable from "react-draggable";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,6 +6,7 @@ import { setOneParam } from "../../reducers/routesParamsSlice";
 
 export function DepartureFilter() {
   const dispatch = useDispatch();
+  const nodeRef = React.useRef(null);
 
   const [timeDeparture, setTimeDeparture] = useState({
     from: 0,
@@ -80,12 +82,13 @@ export function DepartureFilter() {
           <h3 className="time-filter-title">Время отбытия</h3>
           <div className="circle-container time-container">
             <Draggable
+              nodeRef={nodeRef}
               axis="x"
               bounds={{ left: 0, right: 281 }}
               onDrag={handleTimeDeparture}
             >
               <div
-                className="time-circle-1"
+                className="time-circle-1" ref={nodeRef}
                 //style={{ left: "0px" }}
               ></div>
             </Draggable>
@@ -96,11 +99,13 @@ export function DepartureFilter() {
                         ></div> */}
             <Draggable
               axis="x"
+              nodeRef={nodeRef}
               bounds={{ left: -281, right: 0 }}
               onDrag={handleTimeDepartureTo}
             >
               <div
                 className="time-circle-2"
+                ref={nodeRef}
                 //   style={{ left: "155px" }}
               ></div>
             </Draggable>
@@ -123,11 +128,12 @@ export function DepartureFilter() {
           <h3 className="time-filter-title arrival-title">Время прибытия</h3>
           <div className="circle-container time-container">
             <Draggable
+              nodeRef={nodeRef}
               axis="x"
               bounds={{ left: 0, right: 281 }}
               onDrag={handleTimeArrival}
             >
-              <div className="time-circle-1"></div>
+              <div className="time-circle-1" ref={nodeRef}></div>
             </Draggable>
             <div className="timeline-gray"></div>
             {/* <div
@@ -135,11 +141,12 @@ export function DepartureFilter() {
               style={{ left: "52px", right: "136px" }}
                       ></div> */}
             <Draggable
+              nodeRef={nodeRef}
               axis="x"
               bounds={{ left: -281, right: 0 }}
               onDrag={handleTimeArrivalTo}
             >
-              <div className="time-circle-2"></div>
+              <div className="time-circle-2" ref={nodeRef}></div>
             </Draggable>
           </div>
           <div className="cost-container time-container">

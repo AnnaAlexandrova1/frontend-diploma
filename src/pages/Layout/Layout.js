@@ -9,7 +9,7 @@ export default function Layout({main, sidebar, sidebarBottom}) {
       <main className="main-container">
         <section className="sidebar-content">
           {sidebar}
-          {sidebarBottom}
+          {sidebarBottom ? sidebarBottom : null}
         </section>
         {main}
       </main>

@@ -293,7 +293,7 @@ export default function Passenger({ item, index }) {
             <h3 className="document-type_title">Номер</h3>
             <input
               type="text"
-              value={showDataForVal("passNum")}
+              value={showDataForVal("passNum") || ''}
               pattern="[0-9]{6}"
               onChange={(evt) =>
                 timeDelay({

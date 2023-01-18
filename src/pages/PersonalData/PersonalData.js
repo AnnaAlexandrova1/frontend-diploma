@@ -24,6 +24,7 @@ export default function PersonalData() {
       return "disabled";
     }
   };
+  const checkDis = checkData()
 
   return (
     <section className="pay-data_main-container">
@@ -37,8 +38,8 @@ export default function PersonalData() {
         </div>
         <PayWay />
       </section>
-          <NavLink to="/confirmation/" style={{textDecoration: 'none'}}>
-          <button className="pay-button" disabled={checkData()}>
+          <NavLink to="/confirmation" style={{textDecoration: 'none'}}>
+          <button className="pay-button" disabled={checkDis}>
         Купить билеты
       </button></NavLink>
     </section>
