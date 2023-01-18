@@ -21,10 +21,8 @@ export default function TrainsHead({ count }) {
 
   const onHandleOffset = (evt) => {
     if (+evt.target.textContent === 5 || +evt.target.textContent === 10 || +evt.target.textContent === 20) {
-      console.log(typeof +evt.target.textContent)
-      dispatch(setOneParam({key: 'offset', value: +evt.target.textContent}))
+      dispatch(setOneParam({key: 'limit', value: +evt.target.textContent}))
     } else {
-      console.log('return')
       return
     }
   }

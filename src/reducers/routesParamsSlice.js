@@ -24,8 +24,8 @@ const initialState = {
   end_departure_hour_to: "",
   end_arrival_hour_from: "",
   end_arrival_hour_to: "",
-  limit: null,
-  offset: 5,
+  limit: 5,
+  offset: 0,
   sort: "date",
 };
 
