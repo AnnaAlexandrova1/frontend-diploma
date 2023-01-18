@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/frontend-diploma/static/css/main.fcd6438f.css",
-    "main.js": "/frontend-diploma/static/js/main.d1ac4ed7.js",
+    "main.css": "/frontend-diploma/static/css/main.723fd8e0.css",
+    "main.js": "/frontend-diploma/static/js/main.45df4918.js",
+    "static/media/orderEnd.png": "/frontend-diploma/static/media/orderEnd.22e45cd63d240138ec35.png",
     "static/media/how-its-work-img.png": "/frontend-diploma/static/media/how-its-work-img.34a6bf67f0dd842ef3b3.png",
     "static/media/train.png": "/frontend-diploma/static/media/train.f4d1d371eda14a0a99b8.png",
     "static/media/TrainSelect_header-background.png": "/frontend-diploma/static/media/TrainSelect_header-background.7bcf03548dede83b9f48.png",
@@ -29,11 +30,11 @@
     "static/media/from-to-geo.svg": "/frontend-diploma/static/media/from-to-geo.08fbb43a0862cb1fd22a1aeeeb6740b2.svg",
     "static/media/footer-ellipse.svg": "/frontend-diploma/static/media/footer-ellipse.767a692508e291e6b8135c7959fcc5c4.svg",
     "static/media/firstClass.svg": "/frontend-diploma/static/media/firstClass.2f216c4a3de2b946bc67ea048c2fc6d6.svg",
-    "main.fcd6438f.css.map": "/frontend-diploma/static/css/main.fcd6438f.css.map",
-    "main.d1ac4ed7.js.map": "/frontend-diploma/static/js/main.d1ac4ed7.js.map"
+    "main.723fd8e0.css.map": "/frontend-diploma/static/css/main.723fd8e0.css.map",
+    "main.45df4918.js.map": "/frontend-diploma/static/js/main.45df4918.js.map"
   },
   "entrypoints": [
-    "static/css/main.fcd6438f.css",
-    "static/js/main.d1ac4ed7.js"
+    "static/css/main.723fd8e0.css",
+    "static/js/main.45df4918.js"
   ]
 }
